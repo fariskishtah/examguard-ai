@@ -11,3 +11,8 @@
   (Apache-2.0), NumPy (BSD-3), SQLAlchemy and Alembic (MIT), Pillow (MIT-CMU), psutil (BSD-3), lap (BSD-2),
   PyInstaller (GPLv2+ with an exception for distributing built apps). All are compatible with AGPL-3.0 distribution.
 * **Sample media**: see `DATA_SOURCES.md`. CC BY-SA material is used locally only and is not redistributed.
+
+* **Evaluation-only data** (not distributed): MOT15 is CC BY-NC-SA 3.0 (research use); COCO annotations are CC BY 4.0 with mixed
+  image licences; neither is redistributed or used for training. Extra evaluation tools: py-motmetrics (MIT), remotezip (MIT),
+  pandas (BSD-3), pyarrow (Apache-2.0).
+* **Optional model** `yolo11s.pt` (official Ultralytics weights, AGPL-3.0, downloaded on request by `scripts/fetch_model.py yolo11s`).

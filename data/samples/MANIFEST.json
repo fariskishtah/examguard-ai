@@ -40,5 +40,47 @@
     "mime": "image/jpeg",
     "sha256": "9e6c79df983d6eb53b4edf8205f0fe990ee8b821d49094bed913ad22dca4a260",
     "file": "Black_smartphone_in_hand_Unsplash_.jpg"
+  },
+  "Smartphone_in_Hand_Unsplash_.jpg": {
+    "title": "File:Smartphone in Hand (Unsplash).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/Smartphone_in_Hand_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "page": "https://commons.wikimedia.org/wiki/File%3ASmartphone_in_Hand_%28Unsplash%29.jpg",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "author": "NeONBRAND neonbrand",
+    "width": 2462,
+    "height": 1641,
+    "bytes": 2208450,
+    "mime": "image/jpeg",
+    "sha256": "f3c2e15cbc516969f1b24c40d021c19f2f7eecac98ec08e578fa9973a36a2329",
+    "file": "Smartphone_in_Hand_Unsplash_.jpg"
+  },
+  "Hand-smartphone-technology-calling.jpg": {
+    "title": "File:Hand-smartphone-technology-calling.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Hand-smartphone-technology-calling.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "page": "https://commons.wikimedia.org/wiki/File%3AHand-smartphone-technology-calling.jpg",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "author": "Unknown authorUnknown author",
+    "width": 3264,
+    "height": 4928,
+    "bytes": 7522553,
+    "mime": "image/jpeg",
+    "sha256": "30f7684e697b76fc4e9d9a54a679624a6dd37246f113a828ff2dfa7387190cf7",
+    "file": "Hand-smartphone-technology-calling.jpg"
+  },
+  "Smartphone_Use.jpg": {
+    "title": "File:Smartphone Use.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Smartphone_Use.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "page": "https://commons.wikimedia.org/wiki/File%3ASmartphone_Use.jpg",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "author": "Oc\u00e9anos y dados",
+    "width": 1280,
+    "height": 853,
+    "bytes": 124889,
+    "mime": "image/jpeg",
+    "sha256": "1f9abd8cb2511c7c125a6fa4725f8fd89af9ce398e8527c53c656327a4ebfd06",
+    "file": "Smartphone_Use.jpg"
   }
 }

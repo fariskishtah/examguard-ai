@@ -1,0 +1,296 @@
+{
+ "note": "A: held-out SYNTHETIC fixtures (software-level). B: REAL MOT15 footage, GT-trajectory-derived region-exit events.",
+ "part_a_phone_synthetic_heldout": [
+  {
+   "config": "v0 original (640, no assist, bytetrack)",
+   "overrides": {
+    "imgsz": 640,
+    "phone_crop_assist": false,
+    "tracker_kind": "bytetrack"
+   },
+   "event_recall": 0.333,
+   "gt_events": 3,
+   "event_precision": 1.0,
+   "duplicate_incidents": 3,
+   "duplicate_rate": 0.75,
+   "mean_detection_delay_s": 0.5,
+   "mean_window_coverage": 0.35,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0214,
+   "end_to_end_fps": 48.6,
+   "peak_rss_mb": 399,
+   "per_video": [
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "phone",
+     "correct": 4,
+     "false": 0,
+     "delay_s": 0.5
+    },
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  },
+  {
+   "config": "shipped (640 + crop416 assist, bytetrack)",
+   "overrides": {
+    "imgsz": 640,
+    "phone_crop_assist": true,
+    "phone_crop_imgsz": 416,
+    "tracker_kind": "bytetrack"
+   },
+   "event_recall": 0.333,
+   "gt_events": 3,
+   "event_precision": 1.0,
+   "duplicate_incidents": 3,
+   "duplicate_rate": 0.75,
+   "mean_detection_delay_s": 0.5,
+   "mean_window_coverage": 0.679,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0214,
+   "end_to_end_fps": 13.8,
+   "peak_rss_mb": 337,
+   "per_video": [
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "phone",
+     "correct": 4,
+     "false": 0,
+     "delay_s": 0.5
+    },
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  },
+  {
+   "config": "C0 auto-native, no assist, botsort",
+   "overrides": {
+    "phone_crop_assist": false
+   },
+   "event_recall": 0.333,
+   "gt_events": 3,
+   "event_precision": 1.0,
+   "duplicate_incidents": 3,
+   "duplicate_rate": 0.75,
+   "mean_detection_delay_s": 0.5,
+   "mean_window_coverage": 0.35,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0214,
+   "end_to_end_fps": 58.6,
+   "peak_rss_mb": 224,
+   "per_video": [
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "phone",
+     "correct": 4,
+     "false": 0,
+     "delay_s": 0.5
+    },
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  },
+  {
+   "config": "C1 auto-native + crop640 + botsort [candidate default]",
+   "overrides": {
+    "phone_crop_assist": true
+   },
+   "event_recall": 0.667,
+   "gt_events": 3,
+   "event_precision": 1.0,
+   "duplicate_incidents": 3,
+   "duplicate_rate": 0.6,
+   "mean_detection_delay_s": 1.99,
+   "mean_window_coverage": 0.741,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0214,
+   "end_to_end_fps": 12.0,
+   "peak_rss_mb": 335,
+   "per_video": [
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "phone",
+     "correct": 4,
+     "false": 0,
+     "delay_s": 0.29
+    },
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "phone",
+     "correct": 1,
+     "false": 0,
+     "delay_s": 3.7
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  },
+  {
+   "config": "C1s = C1 with yolo11s",
+   "overrides": {
+    "phone_crop_assist": true,
+    "weights_path": "models/yolo11s.pt"
+   },
+   "event_recall": 1.0,
+   "gt_events": 3,
+   "event_precision": 1.0,
+   "duplicate_incidents": 4,
+   "duplicate_rate": 0.571,
+   "mean_detection_delay_s": 2.78,
+   "mean_window_coverage": 0.354,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0214,
+   "end_to_end_fps": 4.8,
+   "peak_rss_mb": 316,
+   "per_video": [
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "phone",
+     "correct": 5,
+     "false": 0,
+     "delay_s": 0.29
+    },
+    {
+     "seq": "ETH-Pedcross2",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "phone",
+     "correct": 1,
+     "false": 0,
+     "delay_s": 7.2
+    },
+    {
+     "seq": "KITTI-17",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "phone",
+     "correct": 1,
+     "false": 0,
+     "delay_s": 0.84
+    },
+    {
+     "seq": "TUD-Campus",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  }
+ ]
+}

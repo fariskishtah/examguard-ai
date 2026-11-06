@@ -88,6 +88,7 @@ def _fmt_ts(ts: float) -> str:
 class EngineOutput:
     started: list[Incident] = field(default_factory=list)
     resolved: list[Incident] = field(default_factory=list)
+    reopened: list[Incident] = field(default_factory=list)  # resolved incidents continued by a new track (no new alert)
     active: dict[int, list[Incident]] = field(default_factory=dict)  # track_id -> active incidents
 
 
@@ -109,6 +110,9 @@ class EventEngine:
         self._region: dict[int, dict] = {}
         self._poly = [tuple(p) for p in settings.region_polygon]
         self._last_seen: dict[int, float] = {}
+        self._alias: dict[int, int] = {}              # new track id -> track id that owns the continued phone incident
+        self._visible: set[int] = set()               # track ids present in the CURRENT frame
+        self._phone_incidents: list[Incident] = []    # recent phone incidents (merge candidates)
         self.frame_size: tuple[int, int] | None = None  # (w, h) needed for region polygon
 
     # ---- association ---------------------------------------------------
@@ -151,6 +155,7 @@ class EventEngine:
         for tr in tracks:
             self._last_seen[tr.track_id] = ts
         by_id = {t.track_id: t for t in tracks}
+        self._visible = set(by_id)
         hits = self.associate_phones(tracks, phones)
         self._phone_rule(frame_index, ts, by_id, hits, out)
         self._region_rule(frame_index, ts, by_id, out)
@@ -158,19 +163,23 @@ class EventEngine:
         self._gc(ts)
         for (tid, _), inc in self._incidents.items():
             out.active.setdefault(tid, []).append(inc)
+        for new_tid, old_tid in self._alias.items():  # the red box follows the person's CURRENT track
+            inc = self._incidents.get((old_tid, PHONE_EVENT))
+            if inc is not None and new_tid in by_id and inc not in out.active.get(new_tid, []):
+                out.active.setdefault(new_tid, []).append(inc)
         return out
 
     # ---- rule A --------------------------------------------------------
     def _phone_rule(self, frame, ts, by_id, hits, out):
         s = self.s
         for tid in set(hits) | set(self._phone_win):
-            win = self._phone_win.setdefault(tid, deque(maxlen=s.phone_window_frames))
+            win = self._phone_win.setdefault(tid, deque(maxlen=self._window_frames()))
             h = hits.get(tid)
             win.append((frame, ts, h.phone.confidence, h.person.confidence, h.person.bbox, h.phone.bbox) if h else None)
             if len(win) == win.maxlen and all(w is None for w in win):
                 del self._phone_win[tid]
                 continue
-            key = (tid, PHONE_EVENT)
+            key = (self._alias.get(tid, tid), PHONE_EVENT)
             inc = self._incidents.get(key)
             if inc:
                 if h:
@@ -178,8 +187,22 @@ class EventEngine:
                     self._last_support_ts[key] = ts
                 continue
             support = [w for w in win if w]
+            if (len(support) >= s.phone_min_support_frames and h is not None
+                    and support[-1][1] - support[0][1] >= s.phone_min_duration_seconds - 1e-9):
+                old = self._merge_candidate(key[0], ts, h.phone.bbox)
+                if old is not None:  # same phone, different track id (ID switch): continue the incident
+                    okey = (old.track_id, PHONE_EVENT)
+                    self._alias[tid] = old.track_id
+                    if okey not in self._incidents:  # it had been resolved -> re-open instead of a duplicate alert
+                        old.state, old.ended_ts = ACTIVE, None
+                        self._incidents[okey] = old
+                        self._cooldown_until.pop(okey, None)
+                        out.reopened.append(old)
+                    old.add_support(frame, ts, h.phone.confidence, h.person.confidence, h.person.bbox, h.phone.bbox)
+                    self._last_support_ts[okey] = ts
+                    continue
             if (len(support) >= s.phone_min_support_frames and ts >= self._cooldown_until.get(key, -1)
-                    and h is not None):
+                    and h is not None and support[-1][1] - support[0][1] >= s.phone_min_duration_seconds - 1e-9):
                 f0, t0 = support[0][0], support[0][1]
                 inc = Incident(PHONE_EVENT, tid, t0, f0, ts, frame, h.person.bbox, h.phone.bbox)
                 for w in support:  # fold in evidence that confirmed the event
@@ -191,7 +214,39 @@ class EventEngine:
                 inc.started_ts, inc.started_frame = ts, frame  # alert time = confirmation time
                 self._incidents[key] = inc
                 self._last_support_ts[key] = ts
+                self._phone_incidents.append(inc)
+                del self._phone_incidents[:-64]
                 out.started.append(inc)
+
+    def _window_frames(self) -> int:
+        """Sliding-window length in processed frames: the configured size, widened so the window can span the minimum
+        duration (otherwise fast video, e.g. 60 fps, could never satisfy it)."""
+        import math
+        need = math.ceil(self.s.phone_min_duration_seconds * self.fps * 1.5)
+        return max(self.s.phone_window_frames, need)
+
+    def _merge_candidate(self, canon_tid: int, ts: float, phone_bbox: Box) -> Incident | None:
+        """A recent phone incident on ANOTHER track whose phone is close in time and space (<= N phone sizes).
+
+        An ID switch means the old track has DISAPPEARED. If the incident's track is still visible it is a different
+        person (e.g. a neighbour), so it is never merged: a duplicate alert is safer than a lost one.
+        """
+        gap = self.s.phone_merge_gap_seconds
+        if gap <= 0:
+            return None
+        pw = max(phone_bbox[2] - phone_bbox[0], phone_bbox[3] - phone_bbox[1])
+        pc = center(phone_bbox)
+        for old in reversed(self._phone_incidents):
+            if old.track_id == canon_tid or old.phone_bbox is None or old.track_id in self._visible:
+                continue
+            last = old.last_ts if old.state == ACTIVE else (old.ended_ts or old.last_ts)
+            if ts - last > gap:
+                continue
+            ow = max(old.phone_bbox[2] - old.phone_bbox[0], old.phone_bbox[3] - old.phone_bbox[1])
+            oc = center(old.phone_bbox)
+            if ((pc[0] - oc[0]) ** 2 + (pc[1] - oc[1]) ** 2) ** 0.5 <= self.s.phone_merge_distance * max(pw, ow):
+                return old
+        return None
 
     # ---- rule B --------------------------------------------------------
     def _region_rule(self, frame, ts, by_id, out):
@@ -248,6 +303,7 @@ class EventEngine:
     def _gc(self, ts):
         for tid in [t for t, last in self._last_seen.items() if ts - last > 120]:
             self._last_seen.pop(tid, None)
+            self._alias.pop(tid, None)
             self._region.pop(tid, None)
 
 

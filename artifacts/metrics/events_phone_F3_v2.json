@@ -1,0 +1,60 @@
+{
+ "note": "A: held-out SYNTHETIC fixtures (software-level). B: REAL MOT15 footage, GT-trajectory-derived region-exit events.",
+ "part_a_phone_synthetic_heldout": [
+  {
+   "config": "FINAL v2 (default incl. min event duration 0.5 s)",
+   "overrides": {},
+   "event_recall": 0.333,
+   "gt_events": 3,
+   "event_precision": 1.0,
+   "duplicate_incidents": 0,
+   "duplicate_rate": 0.0,
+   "mean_detection_delay_s": 3.64,
+   "mean_window_coverage": 0.536,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0353,
+   "end_to_end_fps": 6.7,
+   "peak_rss_mb": 345,
+   "per_video": [
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "phone",
+     "correct": 1,
+     "false": 0,
+     "delay_s": 3.64
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  }
+ ]
+}

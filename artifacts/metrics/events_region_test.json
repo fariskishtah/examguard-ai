@@ -1,0 +1,323 @@
+{
+ "note": "A: held-out SYNTHETIC fixtures (software-level). B: REAL MOT15 footage, GT-trajectory-derived region-exit events.",
+ "part_b_region_exit_real_footage": {
+  "sequences": [
+   "PETS09-S2L1",
+   "TUD-Stadtmitte",
+   "ETH-Sunnyday"
+  ],
+  "rows": [
+   {
+    "config": "old (byte .35/.4 buf30 floor .35)",
+    "tracker": {
+     "high": 0.35,
+     "low": 0.1,
+     "new": 0.4,
+     "buffer": 30,
+     "match": 0.8
+    },
+    "n_gt_events": 65,
+    "precision": 0.909,
+    "recall": 0.923,
+    "tp": 60,
+    "fp": 6,
+    "fn": 5,
+    "duplicate_alerts": 0,
+    "mean_delay_s": -0.03,
+    "false_alerts_per_hour": 49.3,
+    "hours_evaluated": 0.1217,
+    "per_run": [
+     {
+      "seq": "PETS09-S2L1",
+      "region": "left-half",
+      "gt_events": 13,
+      "pred_events": 12,
+      "tp": 12,
+      "fp": 0,
+      "fn": 1
+     },
+     {
+      "seq": "PETS09-S2L1",
+      "region": "right-half",
+      "gt_events": 17,
+      "pred_events": 17,
+      "tp": 15,
+      "fp": 2,
+      "fn": 2
+     },
+     {
+      "seq": "PETS09-S2L1",
+      "region": "center-band",
+      "gt_events": 24,
+      "pred_events": 23,
+      "tp": 22,
+      "fp": 1,
+      "fn": 2
+     },
+     {
+      "seq": "TUD-Stadtmitte",
+      "region": "left-half",
+      "gt_events": 1,
+      "pred_events": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "TUD-Stadtmitte",
+      "region": "right-half",
+      "gt_events": 1,
+      "pred_events": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "TUD-Stadtmitte",
+      "region": "center-band",
+      "gt_events": 2,
+      "pred_events": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "ETH-Sunnyday",
+      "region": "left-half",
+      "gt_events": 3,
+      "pred_events": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "ETH-Sunnyday",
+      "region": "right-half",
+      "gt_events": 1,
+      "pred_events": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "ETH-Sunnyday",
+      "region": "center-band",
+      "gt_events": 3,
+      "pred_events": 6,
+      "tp": 3,
+      "fp": 3,
+      "fn": 0
+     }
+    ]
+   },
+   {
+    "config": "shipped (byte .5 buf60 floor .1)",
+    "tracker": {
+     "high": 0.5,
+     "low": 0.1,
+     "new": 0.5,
+     "buffer": 60,
+     "match": 0.8
+    },
+    "n_gt_events": 65,
+    "precision": 0.923,
+    "recall": 0.923,
+    "tp": 60,
+    "fp": 5,
+    "fn": 5,
+    "duplicate_alerts": 0,
+    "mean_delay_s": -0.03,
+    "false_alerts_per_hour": 41.1,
+    "hours_evaluated": 0.1217,
+    "per_run": [
+     {
+      "seq": "PETS09-S2L1",
+      "region": "left-half",
+      "gt_events": 13,
+      "pred_events": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "PETS09-S2L1",
+      "region": "right-half",
+      "gt_events": 17,
+      "pred_events": 16,
+      "tp": 14,
+      "fp": 2,
+      "fn": 3
+     },
+     {
+      "seq": "PETS09-S2L1",
+      "region": "center-band",
+      "gt_events": 24,
+      "pred_events": 23,
+      "tp": 22,
+      "fp": 1,
+      "fn": 2
+     },
+     {
+      "seq": "TUD-Stadtmitte",
+      "region": "left-half",
+      "gt_events": 1,
+      "pred_events": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "TUD-Stadtmitte",
+      "region": "right-half",
+      "gt_events": 1,
+      "pred_events": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "TUD-Stadtmitte",
+      "region": "center-band",
+      "gt_events": 2,
+      "pred_events": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "ETH-Sunnyday",
+      "region": "left-half",
+      "gt_events": 3,
+      "pred_events": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "ETH-Sunnyday",
+      "region": "right-half",
+      "gt_events": 1,
+      "pred_events": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "ETH-Sunnyday",
+      "region": "center-band",
+      "gt_events": 3,
+      "pred_events": 5,
+      "tp": 3,
+      "fp": 2,
+      "fn": 0
+     }
+    ]
+   },
+   {
+    "config": "NEW (botsort .5 buf60 floor .1)",
+    "tracker": {
+     "kind": "botsort",
+     "high": 0.5,
+     "low": 0.1,
+     "new": 0.5,
+     "buffer": 60,
+     "match": 0.8,
+     "gmc": "none"
+    },
+    "n_gt_events": 65,
+    "precision": 0.923,
+    "recall": 0.923,
+    "tp": 60,
+    "fp": 5,
+    "fn": 5,
+    "duplicate_alerts": 0,
+    "mean_delay_s": -0.03,
+    "false_alerts_per_hour": 41.1,
+    "hours_evaluated": 0.1217,
+    "per_run": [
+     {
+      "seq": "PETS09-S2L1",
+      "region": "left-half",
+      "gt_events": 13,
+      "pred_events": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "PETS09-S2L1",
+      "region": "right-half",
+      "gt_events": 17,
+      "pred_events": 16,
+      "tp": 14,
+      "fp": 2,
+      "fn": 3
+     },
+     {
+      "seq": "PETS09-S2L1",
+      "region": "center-band",
+      "gt_events": 24,
+      "pred_events": 23,
+      "tp": 22,
+      "fp": 1,
+      "fn": 2
+     },
+     {
+      "seq": "TUD-Stadtmitte",
+      "region": "left-half",
+      "gt_events": 1,
+      "pred_events": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "TUD-Stadtmitte",
+      "region": "right-half",
+      "gt_events": 1,
+      "pred_events": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "TUD-Stadtmitte",
+      "region": "center-band",
+      "gt_events": 2,
+      "pred_events": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "ETH-Sunnyday",
+      "region": "left-half",
+      "gt_events": 3,
+      "pred_events": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "ETH-Sunnyday",
+      "region": "right-half",
+      "gt_events": 1,
+      "pred_events": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+     },
+     {
+      "seq": "ETH-Sunnyday",
+      "region": "center-band",
+      "gt_events": 3,
+      "pred_events": 5,
+      "tp": 3,
+      "fp": 2,
+      "fn": 0
+     }
+    ]
+   }
+  ]
+ }
+}

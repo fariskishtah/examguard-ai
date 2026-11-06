@@ -1,0 +1,352 @@
+{
+ "note": "A: held-out SYNTHETIC fixtures (software-level). B: REAL MOT15 footage, GT-trajectory-derived region-exit events.",
+ "part_a_phone_synthetic_heldout": [
+  {
+   "config": "v0 original (640, no assist, bytetrack, no merge)",
+   "overrides": {
+    "imgsz": 640,
+    "phone_crop_assist": false,
+    "tracker_kind": "bytetrack",
+    "phone_merge_gap_seconds": 0
+   },
+   "event_recall": 0.0,
+   "gt_events": 3,
+   "event_precision": 0.0,
+   "duplicate_incidents": 0,
+   "duplicate_rate": 0.0,
+   "mean_detection_delay_s": null,
+   "mean_window_coverage": null,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0353,
+   "end_to_end_fps": 59.7,
+   "peak_rss_mb": 746,
+   "per_video": [
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  },
+  {
+   "config": "shipped before this pass (640 + crop416, bytetrack, no merge)",
+   "overrides": {
+    "imgsz": 640,
+    "phone_crop_assist": true,
+    "phone_crop_imgsz": 416,
+    "tracker_kind": "bytetrack",
+    "phone_merge_gap_seconds": 0
+   },
+   "event_recall": 0.0,
+   "gt_events": 3,
+   "event_precision": 0.0,
+   "duplicate_incidents": 0,
+   "duplicate_rate": 0.0,
+   "mean_detection_delay_s": null,
+   "mean_window_coverage": null,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0353,
+   "end_to_end_fps": 21.2,
+   "peak_rss_mb": 580,
+   "per_video": [
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  },
+  {
+   "config": "C0 auto-native, no assist, botsort",
+   "overrides": {
+    "phone_crop_assist": false
+   },
+   "event_recall": 0.0,
+   "gt_events": 3,
+   "event_precision": 0.0,
+   "duplicate_incidents": 0,
+   "duplicate_rate": 0.0,
+   "mean_detection_delay_s": null,
+   "mean_window_coverage": null,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0353,
+   "end_to_end_fps": 36.9,
+   "peak_rss_mb": 249,
+   "per_video": [
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  },
+  {
+   "config": "FINAL default (auto-native + crop640 + botsort + merge)",
+   "overrides": {},
+   "event_recall": 0.333,
+   "gt_events": 3,
+   "event_precision": 1.0,
+   "duplicate_incidents": 0,
+   "duplicate_rate": 0.0,
+   "mean_detection_delay_s": 3.64,
+   "mean_window_coverage": 0.536,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0353,
+   "end_to_end_fps": 8.0,
+   "peak_rss_mb": 360,
+   "per_video": [
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "phone",
+     "correct": 1,
+     "false": 0,
+     "delay_s": 3.64
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  },
+  {
+   "config": "FINAL without merge (ablation)",
+   "overrides": {
+    "phone_merge_gap_seconds": 0
+   },
+   "event_recall": 0.333,
+   "gt_events": 3,
+   "event_precision": 1.0,
+   "duplicate_incidents": 0,
+   "duplicate_rate": 0.0,
+   "mean_detection_delay_s": 3.64,
+   "mean_window_coverage": 0.536,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0353,
+   "end_to_end_fps": 8.0,
+   "peak_rss_mb": 368,
+   "per_video": [
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "phone",
+     "correct": 1,
+     "false": 0,
+     "delay_s": 3.64
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  },
+  {
+   "config": "FINAL with yolo11s",
+   "overrides": {
+    "weights_path": "models/yolo11s.pt"
+   },
+   "event_recall": 0.333,
+   "gt_events": 3,
+   "event_precision": 1.0,
+   "duplicate_incidents": 1,
+   "duplicate_rate": 0.5,
+   "mean_detection_delay_s": 0.37,
+   "mean_window_coverage": 0.783,
+   "false_incidents_in_positive_videos": 0,
+   "false_incidents_in_clean_twins": 0,
+   "false_alerts_per_hour_clean": 0.0,
+   "clean_hours": 0.0353,
+   "end_to_end_fps": 3.4,
+   "peak_rss_mb": 381,
+   "per_video": [
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "phone",
+     "correct": 2,
+     "false": 0,
+     "delay_s": 0.37
+    },
+    {
+     "seq": "ADL-Rundle-8",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ETH-Bahnhof",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "KITTI-13",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  }
+ ]
+}

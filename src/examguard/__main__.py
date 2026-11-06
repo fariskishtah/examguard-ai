@@ -14,6 +14,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--home", type=Path, help="runtime data directory (default: per-user app-support folder)")
     ap.add_argument("--version", action="store_true")
     ap.add_argument("--demo", type=Path, metavar="VIDEO", help=argparse.SUPPRESS)
+    ap.add_argument("--verify-persistence", action="store_true", help=argparse.SUPPRESS)
     ap.add_argument("--selftest", type=Path, metavar="VIDEO", help="process VIDEO through the real GUI once, print JSON, exit")
     a = ap.parse_args(argv)
     if a.version:
@@ -26,6 +27,9 @@ def main(argv: list[str] | None = None) -> int:
     if a.demo:
         from examguard.ui.selftest import run_demo
         return run_demo(home, a.demo)
+    if a.verify_persistence:
+        from examguard.ui.selftest import run_verify_persistence
+        return run_verify_persistence(home)
     if a.selftest:
         from examguard.ui.selftest import run_selftest
         return run_selftest(home, a.selftest)

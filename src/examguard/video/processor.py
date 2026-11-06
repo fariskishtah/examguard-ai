@@ -17,13 +17,13 @@ from typing import Callable
 import cv2
 import numpy as np
 
-from examguard.config import Paths, Settings
+from examguard.config import Paths, Settings, effective_imgsz
 from examguard.database.repository import Repository
 from examguard.detection.detector import PERSON, PERSON_TRACKER_FLOOR, PHONE, YoloDetector, file_sha256, merge_detections
 from examguard.events.engine import EventEngine, Incident
 from examguard.evidence.capture import capture_evidence
 from examguard.notifications.notifier import Alert, native_notify
-from examguard.tracking.tracker import TRACKER_VERSION, PersonTracker, TrackedPerson
+from examguard.tracking.tracker import PersonTracker, TrackedPerson
 from examguard.video.annotate import draw_frame, draw_region
 from examguard.video.reader import VideoInfo, iter_frames, probe_video
 
@@ -106,7 +106,7 @@ class VideoProcessor:
     def detector(self) -> YoloDetector:
         if self._detector is None:
             self._detector = YoloDetector(self.s.weights_path, PERSON_TRACKER_FLOOR, self.s.phone_conf,
-                                          self.s.nms_iou, self.s.imgsz, self.s.device)
+                                          self.s.nms_iou, 640, self.s.device)
         return self._detector
 
     # ------------------------------------------------------------------
@@ -114,13 +114,16 @@ class VideoProcessor:
         control = control or ProcessingControl()
         info = probe_video(video_path)  # raises VideoError for bad input BEFORE any session is created
         det = self.detector
+        det.imgsz = effective_imgsz(info.width, info.height, self.s.imgsz)  # auto = native resolution (capped)
+        tracker = PersonTracker(self.s.person_conf, self.s.track_low_thresh, self.s.person_conf, self.s.track_buffer,
+                                self.s.match_thresh, kind=self.s.tracker_kind)
         self.emit("status", "Hashing video...")
         fhash = file_sha256(info.path)
         sid = self.repo.create_session(
             info.path.name, fhash, duration_seconds=info.duration_s, frame_count=info.frame_count,
             fps=info.fps, width=info.width, height=info.height, processing_status="PROCESSING",
             processing_started_at=datetime.now(timezone.utc).replace(tzinfo=None),
-            detector_version=det.version, tracker_version=TRACKER_VERSION,
+            detector_version=f"{det.version}|imgsz={det.imgsz}", tracker_version=tracker.version,
             settings_json=json.dumps(self.s.to_dict()))
         summary = ProcessingSummary(sid, "PROCESSING")
         self.emit("session", {"session_id": sid, "info": info})
@@ -133,8 +136,6 @@ class VideoProcessor:
         try:
             stride = self.s.frame_stride
             eff_fps = info.fps / stride
-            tracker = PersonTracker(self.s.person_conf, self.s.track_low_thresh,
-                                    self.s.person_conf, self.s.track_buffer, self.s.match_thresh)
             engine = EventEngine(self.s, eff_fps)
             engine.frame_size = (info.width, info.height)
             if self.s.save_annotated_video:
@@ -177,6 +178,9 @@ class VideoProcessor:
                     active, pending = out.active, engine.pending_tracks()
                     for inc in out.started:
                         self._on_incident_started(sid, inc, frame, tracks, phones, active, summary)
+                    for inc in out.reopened:  # continued by another track id: no new alert, record it as active again
+                        if inc.db_id is not None:
+                            self.repo.update_incident(inc.db_id, lifecycle_state="ACTIVE")
                     for inc in out.resolved:
                         self._persist_resolved(inc)
                 if writer is not None and frame is not None:

@@ -1,0 +1,60 @@
+{
+ "note": "A: held-out SYNTHETIC fixtures (software-level). B: REAL MOT15 footage, GT-trajectory-derived region-exit events.",
+ "part_a_phone_synthetic_heldout": [
+  {
+   "config": "FINAL v2 (default incl. min event duration 0.5 s)",
+   "overrides": {},
+   "event_recall": 0.667,
+   "gt_events": 3,
+   "event_precision": 0.6,
+   "duplicate_incidents": 1,
+   "duplicate_rate": 0.333,
+   "mean_detection_delay_s": 0.68,
+   "mean_window_coverage": 0.876,
+   "false_incidents_in_positive_videos": 1,
+   "false_incidents_in_clean_twins": 1,
+   "false_alerts_per_hour_clean": 24.7,
+   "clean_hours": 0.0406,
+   "end_to_end_fps": 11.5,
+   "peak_rss_mb": 354,
+   "per_video": [
+    {
+     "seq": "ETH-Sunnyday",
+     "kind": "phone",
+     "correct": 0,
+     "false": 0,
+     "delay_s": null
+    },
+    {
+     "seq": "ETH-Sunnyday",
+     "kind": "clean",
+     "incidents": 0
+    },
+    {
+     "seq": "PETS09-S2L1",
+     "kind": "phone",
+     "correct": 2,
+     "false": 1,
+     "delay_s": 0.71
+    },
+    {
+     "seq": "PETS09-S2L1",
+     "kind": "clean",
+     "incidents": 1
+    },
+    {
+     "seq": "TUD-Stadtmitte",
+     "kind": "phone",
+     "correct": 1,
+     "false": 0,
+     "delay_s": 0.64
+    },
+    {
+     "seq": "TUD-Stadtmitte",
+     "kind": "clean",
+     "incidents": 0
+    }
+   ]
+  }
+ ]
+}

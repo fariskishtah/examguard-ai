@@ -39,7 +39,7 @@ def make_app(home):
     from examguard.ui.app import ExamGuardApp
     app = ExamGuardApp(Path(home))
     app.ctl._get_detector = lambda: FakeDetector()
-    app.ctl.settings = Settings(**{**app.ctl.settings.to_dict(), "phone_min_support_frames": 4, "phone_window_frames": 8,
+    app.ctl.settings = Settings(**{**app.ctl.settings.to_dict(), "phone_min_support_frames": 4, "phone_window_frames": 8, "phone_min_duration_seconds": 0.0,
                                    "resolve_after_seconds": 0.5})
     return app
 

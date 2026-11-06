@@ -1,0 +1,3864 @@
+{
+ "note": "MOT15 train sequences; selection on dev only; real ground-truth identities; IoU>=0.5",
+ "dev_sequences": [
+  "ETH-Pedcross2",
+  "TUD-Campus",
+  "KITTI-17"
+ ],
+ "test_sequences": [
+  "PETS09-S2L1",
+  "TUD-Stadtmitte",
+  "ETH-Sunnyday"
+ ],
+ "selected_on_dev": {
+  "byte": "byte high=0.5 buf=30 match=0.8 floor=0.25",
+  "botsort": "botsort gmc=none"
+ },
+ "dev": [
+  {
+   "config": "old_production (byte .35/.4 buf30 floor .35)",
+   "params": {
+    "high": 0.35,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 30,
+    "match": 0.8
+   },
+   "det_floor": 0.35,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6766,
+     "MOTA": 0.5665,
+     "IDSW": 73,
+     "frag": 147,
+     "GT_ids": 133,
+     "ids_created": 147,
+     "id_ratio": 1.11,
+     "recall": 0.6502,
+     "precision": 0.9003,
+     "MT": 41,
+     "ML": 37
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6324,
+     "MOTA": 0.4903,
+     "IDSW": 5,
+     "frag": 11,
+     "GT_ids": 8,
+     "ids_created": 14,
+     "id_ratio": 1.75,
+     "recall": 0.7827,
+     "precision": 0.7375,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8423,
+     "MOTA": 0.7057,
+     "IDSW": 6,
+     "frag": 12,
+     "GT_ids": 9,
+     "ids_created": 12,
+     "id_ratio": 1.33,
+     "recall": 0.7994,
+     "precision": 0.904,
+     "MT": 6,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7171,
+   "mean_MOTA": 0.5875,
+   "total_IDSW": 84,
+   "mean_id_ratio": 1.3967,
+   "tracker_ms_per_frame": 0.32
+  },
+  {
+   "config": "current_production (byte .5/.5 buf60 floor .1)",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6335,
+     "MOTA": 0.558,
+     "IDSW": 77,
+     "frag": 100,
+     "GT_ids": 133,
+     "ids_created": 117,
+     "id_ratio": 0.88,
+     "recall": 0.6348,
+     "precision": 0.9078,
+     "MT": 37,
+     "ML": 43
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7041,
+     "MOTA": 0.546,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7744,
+     "precision": 0.7853,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8394,
+     "MOTA": 0.7013,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7833,
+     "precision": 0.9114,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7257,
+   "mean_MOTA": 0.6018,
+   "total_IDSW": 87,
+   "mean_id_ratio": 1.1233,
+   "tracker_ms_per_frame": 0.35
+  },
+  {
+   "config": "byte high=0.4 buf=30 match=0.7 floor=0.1",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 30,
+    "match": 0.7
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6473,
+     "MOTA": 0.5488,
+     "IDSW": 104,
+     "frag": 126,
+     "GT_ids": 133,
+     "ids_created": 199,
+     "id_ratio": 1.5,
+     "recall": 0.6473,
+     "precision": 0.8877,
+     "MT": 38,
+     "ML": 38
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6171,
+     "MOTA": 0.4568,
+     "IDSW": 6,
+     "frag": 16,
+     "GT_ids": 8,
+     "ids_created": 17,
+     "id_ratio": 2.12,
+     "recall": 0.766,
+     "precision": 0.7237,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8341,
+     "MOTA": 0.7101,
+     "IDSW": 6,
+     "frag": 12,
+     "GT_ids": 9,
+     "ids_created": 15,
+     "id_ratio": 1.67,
+     "recall": 0.8038,
+     "precision": 0.9044,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.6995,
+   "mean_MOTA": 0.5719,
+   "total_IDSW": 116,
+   "mean_id_ratio": 1.7633,
+   "tracker_ms_per_frame": 0.37
+  },
+  {
+   "config": "byte high=0.4 buf=30 match=0.7 floor=0.25",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 30,
+    "match": 0.7
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6591,
+     "MOTA": 0.5587,
+     "IDSW": 99,
+     "frag": 127,
+     "GT_ids": 133,
+     "ids_created": 196,
+     "id_ratio": 1.47,
+     "recall": 0.6414,
+     "precision": 0.9055,
+     "MT": 38,
+     "ML": 38
+    },
+    "TUD-Campus": {
+     "IDF1": 0.623,
+     "MOTA": 0.4763,
+     "IDSW": 6,
+     "frag": 16,
+     "GT_ids": 8,
+     "ids_created": 17,
+     "id_ratio": 2.12,
+     "recall": 0.766,
+     "precision": 0.7373,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8293,
+     "MOTA": 0.7028,
+     "IDSW": 6,
+     "frag": 14,
+     "GT_ids": 9,
+     "ids_created": 15,
+     "id_ratio": 1.67,
+     "recall": 0.795,
+     "precision": 0.905,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7038,
+   "mean_MOTA": 0.5793,
+   "total_IDSW": 111,
+   "mean_id_ratio": 1.7533,
+   "tracker_ms_per_frame": 0.33
+  },
+  {
+   "config": "byte high=0.4 buf=30 match=0.8 floor=0.1",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 30,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6495,
+     "MOTA": 0.5529,
+     "IDSW": 84,
+     "frag": 114,
+     "GT_ids": 133,
+     "ids_created": 150,
+     "id_ratio": 1.13,
+     "recall": 0.6597,
+     "precision": 0.876,
+     "MT": 42,
+     "ML": 37
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6775,
+     "MOTA": 0.4958,
+     "IDSW": 5,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7827,
+     "precision": 0.7414,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8457,
+     "MOTA": 0.7072,
+     "IDSW": 4,
+     "frag": 10,
+     "GT_ids": 9,
+     "ids_created": 12,
+     "id_ratio": 1.33,
+     "recall": 0.8053,
+     "precision": 0.8972,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7242,
+   "mean_MOTA": 0.5853,
+   "total_IDSW": 93,
+   "mean_id_ratio": 1.36,
+   "tracker_ms_per_frame": 0.35
+  },
+  {
+   "config": "byte high=0.4 buf=30 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 30,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6709,
+     "MOTA": 0.5644,
+     "IDSW": 75,
+     "frag": 121,
+     "GT_ids": 133,
+     "ids_created": 146,
+     "id_ratio": 1.1,
+     "recall": 0.653,
+     "precision": 0.895,
+     "MT": 42,
+     "ML": 37
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6803,
+     "MOTA": 0.4986,
+     "IDSW": 5,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7799,
+     "precision": 0.7447,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8425,
+     "MOTA": 0.7028,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 12,
+     "id_ratio": 1.33,
+     "recall": 0.798,
+     "precision": 0.8993,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7312,
+   "mean_MOTA": 0.5886,
+   "total_IDSW": 84,
+   "mean_id_ratio": 1.35,
+   "tracker_ms_per_frame": 0.33
+  },
+  {
+   "config": "byte high=0.4 buf=30 match=0.9 floor=0.1",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 30,
+    "match": 0.9
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6642,
+     "MOTA": 0.5619,
+     "IDSW": 60,
+     "frag": 120,
+     "GT_ids": 133,
+     "ids_created": 118,
+     "id_ratio": 0.89,
+     "recall": 0.6668,
+     "precision": 0.8749,
+     "MT": 46,
+     "ML": 34
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6444,
+     "MOTA": 0.4847,
+     "IDSW": 5,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7911,
+     "precision": 0.7301,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8413,
+     "MOTA": 0.6984,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.8023,
+     "precision": 0.8911,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7166,
+   "mean_MOTA": 0.5817,
+   "total_IDSW": 69,
+   "mean_id_ratio": 1.2433,
+   "tracker_ms_per_frame": 0.34
+  },
+  {
+   "config": "byte high=0.4 buf=30 match=0.9 floor=0.25",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 30,
+    "match": 0.9
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6681,
+     "MOTA": 0.5659,
+     "IDSW": 58,
+     "frag": 125,
+     "GT_ids": 133,
+     "ids_created": 118,
+     "id_ratio": 0.89,
+     "recall": 0.6585,
+     "precision": 0.8876,
+     "MT": 45,
+     "ML": 35
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6433,
+     "MOTA": 0.4819,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7827,
+     "precision": 0.7318,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8399,
+     "MOTA": 0.6969,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.798,
+     "precision": 0.8934,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7171,
+   "mean_MOTA": 0.5816,
+   "total_IDSW": 67,
+   "mean_id_ratio": 1.2433,
+   "tracker_ms_per_frame": 0.31
+  },
+  {
+   "config": "byte high=0.4 buf=60 match=0.7 floor=0.1",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 60,
+    "match": 0.7
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6481,
+     "MOTA": 0.5507,
+     "IDSW": 107,
+     "frag": 127,
+     "GT_ids": 133,
+     "ids_created": 194,
+     "id_ratio": 1.46,
+     "recall": 0.6489,
+     "precision": 0.8889,
+     "MT": 38,
+     "ML": 38
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6171,
+     "MOTA": 0.4568,
+     "IDSW": 6,
+     "frag": 16,
+     "GT_ids": 8,
+     "ids_created": 17,
+     "id_ratio": 2.12,
+     "recall": 0.766,
+     "precision": 0.7237,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8341,
+     "MOTA": 0.7101,
+     "IDSW": 6,
+     "frag": 12,
+     "GT_ids": 9,
+     "ids_created": 15,
+     "id_ratio": 1.67,
+     "recall": 0.8038,
+     "precision": 0.9044,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.6998,
+   "mean_MOTA": 0.5725,
+   "total_IDSW": 119,
+   "mean_id_ratio": 1.75,
+   "tracker_ms_per_frame": 0.38
+  },
+  {
+   "config": "byte high=0.4 buf=60 match=0.7 floor=0.25",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 60,
+    "match": 0.7
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6582,
+     "MOTA": 0.5574,
+     "IDSW": 105,
+     "frag": 128,
+     "GT_ids": 133,
+     "ids_created": 195,
+     "id_ratio": 1.47,
+     "recall": 0.6412,
+     "precision": 0.9053,
+     "MT": 38,
+     "ML": 38
+    },
+    "TUD-Campus": {
+     "IDF1": 0.623,
+     "MOTA": 0.4763,
+     "IDSW": 6,
+     "frag": 16,
+     "GT_ids": 8,
+     "ids_created": 17,
+     "id_ratio": 2.12,
+     "recall": 0.766,
+     "precision": 0.7373,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8293,
+     "MOTA": 0.7028,
+     "IDSW": 6,
+     "frag": 14,
+     "GT_ids": 9,
+     "ids_created": 15,
+     "id_ratio": 1.67,
+     "recall": 0.795,
+     "precision": 0.905,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7035,
+   "mean_MOTA": 0.5788,
+   "total_IDSW": 117,
+   "mean_id_ratio": 1.7533,
+   "tracker_ms_per_frame": 0.36
+  },
+  {
+   "config": "byte high=0.4 buf=60 match=0.8 floor=0.1",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 60,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.644,
+     "MOTA": 0.5556,
+     "IDSW": 86,
+     "frag": 116,
+     "GT_ids": 133,
+     "ids_created": 143,
+     "id_ratio": 1.08,
+     "recall": 0.6617,
+     "precision": 0.8776,
+     "MT": 42,
+     "ML": 36
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6748,
+     "MOTA": 0.4875,
+     "IDSW": 5,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7827,
+     "precision": 0.7356,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8457,
+     "MOTA": 0.7072,
+     "IDSW": 4,
+     "frag": 10,
+     "GT_ids": 9,
+     "ids_created": 12,
+     "id_ratio": 1.33,
+     "recall": 0.8053,
+     "precision": 0.8972,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7215,
+   "mean_MOTA": 0.5834,
+   "total_IDSW": 95,
+   "mean_id_ratio": 1.3433,
+   "tracker_ms_per_frame": 0.37
+  },
+  {
+   "config": "byte high=0.4 buf=60 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 60,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6641,
+     "MOTA": 0.5665,
+     "IDSW": 79,
+     "frag": 124,
+     "GT_ids": 133,
+     "ids_created": 137,
+     "id_ratio": 1.03,
+     "recall": 0.6551,
+     "precision": 0.896,
+     "MT": 42,
+     "ML": 37
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6784,
+     "MOTA": 0.493,
+     "IDSW": 5,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7799,
+     "precision": 0.7407,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8425,
+     "MOTA": 0.7028,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 12,
+     "id_ratio": 1.33,
+     "recall": 0.798,
+     "precision": 0.8993,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7283,
+   "mean_MOTA": 0.5874,
+   "total_IDSW": 88,
+   "mean_id_ratio": 1.3267,
+   "tracker_ms_per_frame": 0.35
+  },
+  {
+   "config": "byte high=0.4 buf=60 match=0.9 floor=0.1",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 60,
+    "match": 0.9
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6534,
+     "MOTA": 0.5622,
+     "IDSW": 61,
+     "frag": 120,
+     "GT_ids": 133,
+     "ids_created": 112,
+     "id_ratio": 0.84,
+     "recall": 0.6676,
+     "precision": 0.8747,
+     "MT": 46,
+     "ML": 33
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6444,
+     "MOTA": 0.4847,
+     "IDSW": 5,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7911,
+     "precision": 0.7301,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8413,
+     "MOTA": 0.6984,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.8023,
+     "precision": 0.8911,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.713,
+   "mean_MOTA": 0.5818,
+   "total_IDSW": 70,
+   "mean_id_ratio": 1.2267,
+   "tracker_ms_per_frame": 0.36
+  },
+  {
+   "config": "byte high=0.4 buf=60 match=0.9 floor=0.25",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 60,
+    "match": 0.9
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6645,
+     "MOTA": 0.5644,
+     "IDSW": 62,
+     "frag": 124,
+     "GT_ids": 133,
+     "ids_created": 113,
+     "id_ratio": 0.85,
+     "recall": 0.6589,
+     "precision": 0.8862,
+     "MT": 45,
+     "ML": 35
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6433,
+     "MOTA": 0.4819,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7827,
+     "precision": 0.7318,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8399,
+     "MOTA": 0.6969,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.798,
+     "precision": 0.8934,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7159,
+   "mean_MOTA": 0.5811,
+   "total_IDSW": 71,
+   "mean_id_ratio": 1.23,
+   "tracker_ms_per_frame": 0.34
+  },
+  {
+   "config": "byte high=0.4 buf=120 match=0.7 floor=0.1",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 120,
+    "match": 0.7
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6496,
+     "MOTA": 0.5537,
+     "IDSW": 107,
+     "frag": 127,
+     "GT_ids": 133,
+     "ids_created": 189,
+     "id_ratio": 1.42,
+     "recall": 0.6508,
+     "precision": 0.8905,
+     "MT": 39,
+     "ML": 38
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6171,
+     "MOTA": 0.4568,
+     "IDSW": 6,
+     "frag": 16,
+     "GT_ids": 8,
+     "ids_created": 17,
+     "id_ratio": 2.12,
+     "recall": 0.766,
+     "precision": 0.7237,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8341,
+     "MOTA": 0.7101,
+     "IDSW": 6,
+     "frag": 12,
+     "GT_ids": 9,
+     "ids_created": 15,
+     "id_ratio": 1.67,
+     "recall": 0.8038,
+     "precision": 0.9044,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7003,
+   "mean_MOTA": 0.5735,
+   "total_IDSW": 119,
+   "mean_id_ratio": 1.7367,
+   "tracker_ms_per_frame": 0.41
+  },
+  {
+   "config": "byte high=0.4 buf=120 match=0.7 floor=0.25",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 120,
+    "match": 0.7
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6518,
+     "MOTA": 0.5571,
+     "IDSW": 110,
+     "frag": 129,
+     "GT_ids": 133,
+     "ids_created": 191,
+     "id_ratio": 1.44,
+     "recall": 0.6417,
+     "precision": 0.9054,
+     "MT": 38,
+     "ML": 38
+    },
+    "TUD-Campus": {
+     "IDF1": 0.623,
+     "MOTA": 0.4763,
+     "IDSW": 6,
+     "frag": 16,
+     "GT_ids": 8,
+     "ids_created": 17,
+     "id_ratio": 2.12,
+     "recall": 0.766,
+     "precision": 0.7373,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8293,
+     "MOTA": 0.7028,
+     "IDSW": 6,
+     "frag": 14,
+     "GT_ids": 9,
+     "ids_created": 15,
+     "id_ratio": 1.67,
+     "recall": 0.795,
+     "precision": 0.905,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7014,
+   "mean_MOTA": 0.5787,
+   "total_IDSW": 122,
+   "mean_id_ratio": 1.7433,
+   "tracker_ms_per_frame": 0.39
+  },
+  {
+   "config": "byte high=0.4 buf=120 match=0.8 floor=0.1",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 120,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6388,
+     "MOTA": 0.5564,
+     "IDSW": 84,
+     "frag": 114,
+     "GT_ids": 133,
+     "ids_created": 139,
+     "id_ratio": 1.05,
+     "recall": 0.6623,
+     "precision": 0.8775,
+     "MT": 43,
+     "ML": 35
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6748,
+     "MOTA": 0.4875,
+     "IDSW": 5,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7827,
+     "precision": 0.7356,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8457,
+     "MOTA": 0.7072,
+     "IDSW": 4,
+     "frag": 10,
+     "GT_ids": 9,
+     "ids_created": 12,
+     "id_ratio": 1.33,
+     "recall": 0.8053,
+     "precision": 0.8972,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7198,
+   "mean_MOTA": 0.5837,
+   "total_IDSW": 93,
+   "mean_id_ratio": 1.3333,
+   "tracker_ms_per_frame": 0.39
+  },
+  {
+   "config": "byte high=0.4 buf=120 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 120,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.66,
+     "MOTA": 0.5649,
+     "IDSW": 81,
+     "frag": 120,
+     "GT_ids": 133,
+     "ids_created": 137,
+     "id_ratio": 1.03,
+     "recall": 0.6543,
+     "precision": 0.8953,
+     "MT": 42,
+     "ML": 37
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6784,
+     "MOTA": 0.493,
+     "IDSW": 5,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7799,
+     "precision": 0.7407,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8425,
+     "MOTA": 0.7028,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 12,
+     "id_ratio": 1.33,
+     "recall": 0.798,
+     "precision": 0.8993,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.727,
+   "mean_MOTA": 0.5869,
+   "total_IDSW": 90,
+   "mean_id_ratio": 1.3267,
+   "tracker_ms_per_frame": 0.37
+  },
+  {
+   "config": "byte high=0.4 buf=120 match=0.9 floor=0.1",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 120,
+    "match": 0.9
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6425,
+     "MOTA": 0.5606,
+     "IDSW": 67,
+     "frag": 120,
+     "GT_ids": 133,
+     "ids_created": 109,
+     "id_ratio": 0.82,
+     "recall": 0.6681,
+     "precision": 0.8735,
+     "MT": 46,
+     "ML": 33
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6444,
+     "MOTA": 0.4847,
+     "IDSW": 5,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7911,
+     "precision": 0.7301,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8413,
+     "MOTA": 0.6984,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.8023,
+     "precision": 0.8911,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7094,
+   "mean_MOTA": 0.5812,
+   "total_IDSW": 76,
+   "mean_id_ratio": 1.22,
+   "tracker_ms_per_frame": 0.38
+  },
+  {
+   "config": "byte high=0.4 buf=120 match=0.9 floor=0.25",
+   "params": {
+    "high": 0.4,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 120,
+    "match": 0.9
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6503,
+     "MOTA": 0.5631,
+     "IDSW": 68,
+     "frag": 129,
+     "GT_ids": 133,
+     "ids_created": 111,
+     "id_ratio": 0.83,
+     "recall": 0.6594,
+     "precision": 0.8853,
+     "MT": 45,
+     "ML": 34
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6433,
+     "MOTA": 0.4819,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7827,
+     "precision": 0.7318,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8399,
+     "MOTA": 0.6969,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.798,
+     "precision": 0.8934,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7112,
+   "mean_MOTA": 0.5806,
+   "total_IDSW": 77,
+   "mean_id_ratio": 1.2233,
+   "tracker_ms_per_frame": 0.36
+  },
+  {
+   "config": "byte high=0.5 buf=30 match=0.7 floor=0.1",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 30,
+    "match": 0.7
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6484,
+     "MOTA": 0.5526,
+     "IDSW": 89,
+     "frag": 107,
+     "GT_ids": 133,
+     "ids_created": 161,
+     "id_ratio": 1.21,
+     "recall": 0.6265,
+     "precision": 0.913,
+     "MT": 36,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6592,
+     "MOTA": 0.5543,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7772,
+     "precision": 0.7881,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8256,
+     "MOTA": 0.7145,
+     "IDSW": 6,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 13,
+     "id_ratio": 1.44,
+     "recall": 0.7892,
+     "precision": 0.9229,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7111,
+   "mean_MOTA": 0.6071,
+   "total_IDSW": 100,
+   "mean_id_ratio": 1.4233,
+   "tracker_ms_per_frame": 0.36
+  },
+  {
+   "config": "byte high=0.5 buf=30 match=0.7 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 30,
+    "match": 0.7
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6627,
+     "MOTA": 0.5569,
+     "IDSW": 80,
+     "frag": 106,
+     "GT_ids": 133,
+     "ids_created": 153,
+     "id_ratio": 1.15,
+     "recall": 0.6229,
+     "precision": 0.9214,
+     "MT": 36,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6582,
+     "MOTA": 0.5543,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7744,
+     "precision": 0.7898,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8234,
+     "MOTA": 0.7116,
+     "IDSW": 6,
+     "frag": 12,
+     "GT_ids": 9,
+     "ids_created": 13,
+     "id_ratio": 1.44,
+     "recall": 0.7848,
+     "precision": 0.9241,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7148,
+   "mean_MOTA": 0.6076,
+   "total_IDSW": 91,
+   "mean_id_ratio": 1.4033,
+   "tracker_ms_per_frame": 0.32
+  },
+  {
+   "config": "byte high=0.5 buf=30 match=0.8 floor=0.1",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 30,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6405,
+     "MOTA": 0.556,
+     "IDSW": 73,
+     "frag": 99,
+     "GT_ids": 133,
+     "ids_created": 125,
+     "id_ratio": 0.94,
+     "recall": 0.6326,
+     "precision": 0.9068,
+     "MT": 37,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7041,
+     "MOTA": 0.546,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7744,
+     "precision": 0.7853,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8394,
+     "MOTA": 0.7013,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7833,
+     "precision": 0.9114,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.728,
+   "mean_MOTA": 0.6011,
+   "total_IDSW": 83,
+   "mean_id_ratio": 1.1433,
+   "tracker_ms_per_frame": 0.35
+  },
+  {
+   "config": "byte high=0.5 buf=30 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 30,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6647,
+     "MOTA": 0.5587,
+     "IDSW": 61,
+     "frag": 100,
+     "GT_ids": 133,
+     "ids_created": 124,
+     "id_ratio": 0.93,
+     "recall": 0.6283,
+     "precision": 0.913,
+     "MT": 36,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.706,
+     "MOTA": 0.546,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7716,
+     "precision": 0.7869,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8389,
+     "MOTA": 0.7013,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7804,
+     "precision": 0.9142,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7365,
+   "mean_MOTA": 0.602,
+   "total_IDSW": 71,
+   "mean_id_ratio": 1.14,
+   "tracker_ms_per_frame": 0.32
+  },
+  {
+   "config": "byte high=0.5 buf=30 match=0.9 floor=0.1",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 30,
+    "match": 0.9
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6481,
+     "MOTA": 0.5628,
+     "IDSW": 60,
+     "frag": 101,
+     "GT_ids": 133,
+     "ids_created": 105,
+     "id_ratio": 0.79,
+     "recall": 0.6411,
+     "precision": 0.9033,
+     "MT": 39,
+     "ML": 43
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6667,
+     "MOTA": 0.5292,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 10,
+     "id_ratio": 1.25,
+     "recall": 0.7716,
+     "precision": 0.7737,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8383,
+     "MOTA": 0.6984,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 9,
+     "id_ratio": 1.0,
+     "recall": 0.7848,
+     "precision": 0.9069,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7177,
+   "mean_MOTA": 0.5968,
+   "total_IDSW": 70,
+   "mean_id_ratio": 1.0133,
+   "tracker_ms_per_frame": 0.32
+  },
+  {
+   "config": "byte high=0.5 buf=30 match=0.9 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 30,
+    "match": 0.9
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6457,
+     "MOTA": 0.5617,
+     "IDSW": 58,
+     "frag": 102,
+     "GT_ids": 133,
+     "ids_created": 105,
+     "id_ratio": 0.79,
+     "recall": 0.6321,
+     "precision": 0.9118,
+     "MT": 37,
+     "ML": 43
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6704,
+     "MOTA": 0.5348,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 10,
+     "id_ratio": 1.25,
+     "recall": 0.7688,
+     "precision": 0.7797,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8378,
+     "MOTA": 0.6984,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 9,
+     "id_ratio": 1.0,
+     "recall": 0.7818,
+     "precision": 0.9097,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.718,
+   "mean_MOTA": 0.5983,
+   "total_IDSW": 68,
+   "mean_id_ratio": 1.0133,
+   "tracker_ms_per_frame": 0.3
+  },
+  {
+   "config": "byte high=0.5 buf=60 match=0.7 floor=0.1",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.7
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6467,
+     "MOTA": 0.5531,
+     "IDSW": 92,
+     "frag": 108,
+     "GT_ids": 133,
+     "ids_created": 157,
+     "id_ratio": 1.18,
+     "recall": 0.6275,
+     "precision": 0.9131,
+     "MT": 36,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6592,
+     "MOTA": 0.5543,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7772,
+     "precision": 0.7881,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8256,
+     "MOTA": 0.7145,
+     "IDSW": 6,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 13,
+     "id_ratio": 1.44,
+     "recall": 0.7892,
+     "precision": 0.9229,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7105,
+   "mean_MOTA": 0.6073,
+   "total_IDSW": 103,
+   "mean_id_ratio": 1.4133,
+   "tracker_ms_per_frame": 0.36
+  },
+  {
+   "config": "byte high=0.5 buf=60 match=0.7 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.7
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.663,
+     "MOTA": 0.5582,
+     "IDSW": 80,
+     "frag": 105,
+     "GT_ids": 133,
+     "ids_created": 149,
+     "id_ratio": 1.12,
+     "recall": 0.6235,
+     "precision": 0.9223,
+     "MT": 36,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6582,
+     "MOTA": 0.5543,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7744,
+     "precision": 0.7898,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8234,
+     "MOTA": 0.7116,
+     "IDSW": 6,
+     "frag": 12,
+     "GT_ids": 9,
+     "ids_created": 13,
+     "id_ratio": 1.44,
+     "recall": 0.7848,
+     "precision": 0.9241,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7149,
+   "mean_MOTA": 0.608,
+   "total_IDSW": 91,
+   "mean_id_ratio": 1.3933,
+   "tracker_ms_per_frame": 0.34
+  },
+  {
+   "config": "byte high=0.5 buf=60 match=0.8 floor=0.1",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6335,
+     "MOTA": 0.558,
+     "IDSW": 77,
+     "frag": 100,
+     "GT_ids": 133,
+     "ids_created": 117,
+     "id_ratio": 0.88,
+     "recall": 0.6348,
+     "precision": 0.9078,
+     "MT": 37,
+     "ML": 43
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7041,
+     "MOTA": 0.546,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7744,
+     "precision": 0.7853,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8394,
+     "MOTA": 0.7013,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7833,
+     "precision": 0.9114,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7257,
+   "mean_MOTA": 0.6018,
+   "total_IDSW": 87,
+   "mean_id_ratio": 1.1233,
+   "tracker_ms_per_frame": 0.35
+  },
+  {
+   "config": "byte high=0.5 buf=60 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6636,
+     "MOTA": 0.5596,
+     "IDSW": 63,
+     "frag": 98,
+     "GT_ids": 133,
+     "ids_created": 114,
+     "id_ratio": 0.86,
+     "recall": 0.6296,
+     "precision": 0.9132,
+     "MT": 36,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.706,
+     "MOTA": 0.546,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7716,
+     "precision": 0.7869,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8389,
+     "MOTA": 0.7013,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7804,
+     "precision": 0.9142,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7362,
+   "mean_MOTA": 0.6023,
+   "total_IDSW": 73,
+   "mean_id_ratio": 1.1167,
+   "tracker_ms_per_frame": 0.33
+  },
+  {
+   "config": "byte high=0.5 buf=60 match=0.9 floor=0.1",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.9
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.646,
+     "MOTA": 0.567,
+     "IDSW": 63,
+     "frag": 102,
+     "GT_ids": 133,
+     "ids_created": 97,
+     "id_ratio": 0.73,
+     "recall": 0.6443,
+     "precision": 0.9055,
+     "MT": 39,
+     "ML": 42
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6667,
+     "MOTA": 0.5292,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 10,
+     "id_ratio": 1.25,
+     "recall": 0.7716,
+     "precision": 0.7737,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8383,
+     "MOTA": 0.6984,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 9,
+     "id_ratio": 1.0,
+     "recall": 0.7848,
+     "precision": 0.9069,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.717,
+   "mean_MOTA": 0.5982,
+   "total_IDSW": 73,
+   "mean_id_ratio": 0.9933,
+   "tracker_ms_per_frame": 0.34
+  },
+  {
+   "config": "byte high=0.5 buf=60 match=0.9 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.9
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6117,
+     "MOTA": 0.5625,
+     "IDSW": 62,
+     "frag": 101,
+     "GT_ids": 133,
+     "ids_created": 90,
+     "id_ratio": 0.68,
+     "recall": 0.634,
+     "precision": 0.9114,
+     "MT": 38,
+     "ML": 43
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6704,
+     "MOTA": 0.5348,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 10,
+     "id_ratio": 1.25,
+     "recall": 0.7688,
+     "precision": 0.7797,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8378,
+     "MOTA": 0.6984,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 9,
+     "id_ratio": 1.0,
+     "recall": 0.7818,
+     "precision": 0.9097,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7066,
+   "mean_MOTA": 0.5986,
+   "total_IDSW": 72,
+   "mean_id_ratio": 0.9767,
+   "tracker_ms_per_frame": 0.33
+  },
+  {
+   "config": "byte high=0.5 buf=120 match=0.7 floor=0.1",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 120,
+    "match": 0.7
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6449,
+     "MOTA": 0.554,
+     "IDSW": 92,
+     "frag": 108,
+     "GT_ids": 133,
+     "ids_created": 154,
+     "id_ratio": 1.16,
+     "recall": 0.6285,
+     "precision": 0.9132,
+     "MT": 37,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6592,
+     "MOTA": 0.5543,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7772,
+     "precision": 0.7881,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8256,
+     "MOTA": 0.7145,
+     "IDSW": 6,
+     "frag": 11,
+     "GT_ids": 9,
+     "ids_created": 13,
+     "id_ratio": 1.44,
+     "recall": 0.7892,
+     "precision": 0.9229,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7099,
+   "mean_MOTA": 0.6076,
+   "total_IDSW": 103,
+   "mean_id_ratio": 1.4067,
+   "tracker_ms_per_frame": 0.39
+  },
+  {
+   "config": "byte high=0.5 buf=120 match=0.7 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 120,
+    "match": 0.7
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6609,
+     "MOTA": 0.5595,
+     "IDSW": 80,
+     "frag": 105,
+     "GT_ids": 133,
+     "ids_created": 146,
+     "id_ratio": 1.1,
+     "recall": 0.6245,
+     "precision": 0.9228,
+     "MT": 38,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6582,
+     "MOTA": 0.5543,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7744,
+     "precision": 0.7898,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8234,
+     "MOTA": 0.7116,
+     "IDSW": 6,
+     "frag": 12,
+     "GT_ids": 9,
+     "ids_created": 13,
+     "id_ratio": 1.44,
+     "recall": 0.7848,
+     "precision": 0.9241,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7142,
+   "mean_MOTA": 0.6085,
+   "total_IDSW": 91,
+   "mean_id_ratio": 1.3867,
+   "tracker_ms_per_frame": 0.36
+  },
+  {
+   "config": "byte high=0.5 buf=120 match=0.8 floor=0.1",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 120,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.634,
+     "MOTA": 0.5609,
+     "IDSW": 74,
+     "frag": 99,
+     "GT_ids": 133,
+     "ids_created": 113,
+     "id_ratio": 0.85,
+     "recall": 0.6366,
+     "precision": 0.9088,
+     "MT": 38,
+     "ML": 43
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7041,
+     "MOTA": 0.546,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7744,
+     "precision": 0.7853,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8394,
+     "MOTA": 0.7013,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7833,
+     "precision": 0.9114,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7258,
+   "mean_MOTA": 0.6027,
+   "total_IDSW": 84,
+   "mean_id_ratio": 1.1133,
+   "tracker_ms_per_frame": 0.36
+  },
+  {
+   "config": "byte high=0.5 buf=120 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 120,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6618,
+     "MOTA": 0.5619,
+     "IDSW": 63,
+     "frag": 98,
+     "GT_ids": 133,
+     "ids_created": 111,
+     "id_ratio": 0.83,
+     "recall": 0.6308,
+     "precision": 0.9146,
+     "MT": 37,
+     "ML": 44
+    },
+    "TUD-Campus": {
+     "IDF1": 0.706,
+     "MOTA": 0.546,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7716,
+     "precision": 0.7869,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8389,
+     "MOTA": 0.7013,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7804,
+     "precision": 0.9142,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7356,
+   "mean_MOTA": 0.6031,
+   "total_IDSW": 73,
+   "mean_id_ratio": 1.1067,
+   "tracker_ms_per_frame": 0.34
+  },
+  {
+   "config": "byte high=0.5 buf=120 match=0.9 floor=0.1",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 120,
+    "match": 0.9
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6059,
+     "MOTA": 0.5662,
+     "IDSW": 68,
+     "frag": 102,
+     "GT_ids": 133,
+     "ids_created": 91,
+     "id_ratio": 0.68,
+     "recall": 0.6449,
+     "precision": 0.9048,
+     "MT": 39,
+     "ML": 41
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6667,
+     "MOTA": 0.5292,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 10,
+     "id_ratio": 1.25,
+     "recall": 0.7716,
+     "precision": 0.7737,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8383,
+     "MOTA": 0.6984,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 9,
+     "id_ratio": 1.0,
+     "recall": 0.7848,
+     "precision": 0.9069,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7036,
+   "mean_MOTA": 0.5979,
+   "total_IDSW": 78,
+   "mean_id_ratio": 0.9767,
+   "tracker_ms_per_frame": 0.35
+  },
+  {
+   "config": "byte high=0.5 buf=120 match=0.9 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 120,
+    "match": 0.9
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.613,
+     "MOTA": 0.5625,
+     "IDSW": 64,
+     "frag": 102,
+     "GT_ids": 133,
+     "ids_created": 88,
+     "id_ratio": 0.66,
+     "recall": 0.6345,
+     "precision": 0.9113,
+     "MT": 38,
+     "ML": 43
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6704,
+     "MOTA": 0.5348,
+     "IDSW": 6,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 10,
+     "id_ratio": 1.25,
+     "recall": 0.7688,
+     "precision": 0.7797,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8378,
+     "MOTA": 0.6984,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 9,
+     "id_ratio": 1.0,
+     "recall": 0.7818,
+     "precision": 0.9097,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7071,
+   "mean_MOTA": 0.5986,
+   "total_IDSW": 74,
+   "mean_id_ratio": 0.97,
+   "tracker_ms_per_frame": 0.33
+  },
+  {
+   "config": "byte high=0.6 buf=30 match=0.7 floor=0.1",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 30,
+    "match": 0.7
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6512,
+     "MOTA": 0.5419,
+     "IDSW": 62,
+     "frag": 79,
+     "GT_ids": 133,
+     "ids_created": 137,
+     "id_ratio": 1.03,
+     "recall": 0.5959,
+     "precision": 0.9311,
+     "MT": 28,
+     "ML": 49
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6638,
+     "MOTA": 0.5682,
+     "IDSW": 5,
+     "frag": 14,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7688,
+     "precision": 0.8047,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8189,
+     "MOTA": 0.675,
+     "IDSW": 4,
+     "frag": 8,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.7379,
+     "precision": 0.9282,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7113,
+   "mean_MOTA": 0.595,
+   "total_IDSW": 71,
+   "mean_id_ratio": 1.29,
+   "tracker_ms_per_frame": 0.32
+  },
+  {
+   "config": "byte high=0.6 buf=30 match=0.7 floor=0.25",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 30,
+    "match": 0.7
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.663,
+     "MOTA": 0.5403,
+     "IDSW": 55,
+     "frag": 76,
+     "GT_ids": 133,
+     "ids_created": 131,
+     "id_ratio": 0.98,
+     "recall": 0.59,
+     "precision": 0.9352,
+     "MT": 28,
+     "ML": 50
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6657,
+     "MOTA": 0.5738,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7688,
+     "precision": 0.8094,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8167,
+     "MOTA": 0.672,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.7335,
+     "precision": 0.9295,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7151,
+   "mean_MOTA": 0.5954,
+   "total_IDSW": 64,
+   "mean_id_ratio": 1.2733,
+   "tracker_ms_per_frame": 0.31
+  },
+  {
+   "config": "byte high=0.6 buf=30 match=0.8 floor=0.1",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 30,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6517,
+     "MOTA": 0.5457,
+     "IDSW": 58,
+     "frag": 80,
+     "GT_ids": 133,
+     "ids_created": 112,
+     "id_ratio": 0.84,
+     "recall": 0.6005,
+     "precision": 0.9296,
+     "MT": 27,
+     "ML": 48
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6667,
+     "MOTA": 0.5627,
+     "IDSW": 4,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7604,
+     "precision": 0.8029,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8117,
+     "MOTA": 0.6618,
+     "IDSW": 4,
+     "frag": 8,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7321,
+     "precision": 0.9191,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.71,
+   "mean_MOTA": 0.5901,
+   "total_IDSW": 66,
+   "mean_id_ratio": 1.11,
+   "tracker_ms_per_frame": 0.32
+  },
+  {
+   "config": "byte high=0.6 buf=30 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 30,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6729,
+     "MOTA": 0.5469,
+     "IDSW": 49,
+     "frag": 80,
+     "GT_ids": 133,
+     "ids_created": 112,
+     "id_ratio": 0.84,
+     "recall": 0.5972,
+     "precision": 0.9336,
+     "MT": 27,
+     "ML": 49
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6714,
+     "MOTA": 0.5738,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7632,
+     "precision": 0.8107,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8101,
+     "MOTA": 0.6603,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7277,
+     "precision": 0.9221,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7181,
+   "mean_MOTA": 0.5937,
+   "total_IDSW": 57,
+   "mean_id_ratio": 1.11,
+   "tracker_ms_per_frame": 0.31
+  },
+  {
+   "config": "byte high=0.6 buf=30 match=0.9 floor=0.1",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 30,
+    "match": 0.9
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6273,
+     "MOTA": 0.5521,
+     "IDSW": 50,
+     "frag": 87,
+     "GT_ids": 133,
+     "ids_created": 93,
+     "id_ratio": 0.7,
+     "recall": 0.6055,
+     "precision": 0.9303,
+     "MT": 26,
+     "ML": 47
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7153,
+     "MOTA": 0.5822,
+     "IDSW": 1,
+     "frag": 11,
+     "GT_ids": 8,
+     "ids_created": 9,
+     "id_ratio": 1.12,
+     "recall": 0.766,
+     "precision": 0.8088,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8098,
+     "MOTA": 0.6574,
+     "IDSW": 4,
+     "frag": 8,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7321,
+     "precision": 0.9141,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7175,
+   "mean_MOTA": 0.5972,
+   "total_IDSW": 55,
+   "mean_id_ratio": 0.9767,
+   "tracker_ms_per_frame": 0.31
+  },
+  {
+   "config": "byte high=0.6 buf=30 match=0.9 floor=0.25",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 30,
+    "match": 0.9
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6317,
+     "MOTA": 0.5507,
+     "IDSW": 48,
+     "frag": 89,
+     "GT_ids": 133,
+     "ids_created": 94,
+     "id_ratio": 0.71,
+     "recall": 0.6007,
+     "precision": 0.9342,
+     "MT": 27,
+     "ML": 49
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7182,
+     "MOTA": 0.5877,
+     "IDSW": 1,
+     "frag": 10,
+     "GT_ids": 8,
+     "ids_created": 9,
+     "id_ratio": 1.12,
+     "recall": 0.7688,
+     "precision": 0.8118,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8082,
+     "MOTA": 0.6559,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7277,
+     "precision": 0.917,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7194,
+   "mean_MOTA": 0.5981,
+   "total_IDSW": 53,
+   "mean_id_ratio": 0.98,
+   "tracker_ms_per_frame": 0.29
+  },
+  {
+   "config": "byte high=0.6 buf=60 match=0.7 floor=0.1",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 60,
+    "match": 0.7
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.651,
+     "MOTA": 0.5426,
+     "IDSW": 63,
+     "frag": 80,
+     "GT_ids": 133,
+     "ids_created": 135,
+     "id_ratio": 1.02,
+     "recall": 0.5967,
+     "precision": 0.9312,
+     "MT": 28,
+     "ML": 49
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6638,
+     "MOTA": 0.5682,
+     "IDSW": 5,
+     "frag": 14,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7688,
+     "precision": 0.8047,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8189,
+     "MOTA": 0.675,
+     "IDSW": 4,
+     "frag": 8,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.7379,
+     "precision": 0.9282,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7112,
+   "mean_MOTA": 0.5953,
+   "total_IDSW": 72,
+   "mean_id_ratio": 1.2867,
+   "tracker_ms_per_frame": 0.34
+  },
+  {
+   "config": "byte high=0.6 buf=60 match=0.7 floor=0.25",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 60,
+    "match": 0.7
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6622,
+     "MOTA": 0.5405,
+     "IDSW": 56,
+     "frag": 78,
+     "GT_ids": 133,
+     "ids_created": 128,
+     "id_ratio": 0.96,
+     "recall": 0.5906,
+     "precision": 0.9348,
+     "MT": 28,
+     "ML": 50
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6657,
+     "MOTA": 0.5738,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7688,
+     "precision": 0.8094,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8167,
+     "MOTA": 0.672,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.7335,
+     "precision": 0.9295,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7149,
+   "mean_MOTA": 0.5954,
+   "total_IDSW": 65,
+   "mean_id_ratio": 1.2667,
+   "tracker_ms_per_frame": 0.32
+  },
+  {
+   "config": "byte high=0.6 buf=60 match=0.8 floor=0.1",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 60,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6494,
+     "MOTA": 0.5467,
+     "IDSW": 59,
+     "frag": 81,
+     "GT_ids": 133,
+     "ids_created": 108,
+     "id_ratio": 0.81,
+     "recall": 0.6018,
+     "precision": 0.9295,
+     "MT": 28,
+     "ML": 47
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6667,
+     "MOTA": 0.5627,
+     "IDSW": 4,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7604,
+     "precision": 0.8029,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8117,
+     "MOTA": 0.6618,
+     "IDSW": 4,
+     "frag": 8,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7321,
+     "precision": 0.9191,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7093,
+   "mean_MOTA": 0.5904,
+   "total_IDSW": 67,
+   "mean_id_ratio": 1.1,
+   "tracker_ms_per_frame": 0.33
+  },
+  {
+   "config": "byte high=0.6 buf=60 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 60,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6726,
+     "MOTA": 0.548,
+     "IDSW": 49,
+     "frag": 81,
+     "GT_ids": 133,
+     "ids_created": 104,
+     "id_ratio": 0.78,
+     "recall": 0.5986,
+     "precision": 0.9333,
+     "MT": 28,
+     "ML": 49
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6714,
+     "MOTA": 0.5738,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7632,
+     "precision": 0.8107,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8101,
+     "MOTA": 0.6603,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7277,
+     "precision": 0.9221,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.718,
+   "mean_MOTA": 0.594,
+   "total_IDSW": 57,
+   "mean_id_ratio": 1.09,
+   "tracker_ms_per_frame": 0.31
+  },
+  {
+   "config": "byte high=0.6 buf=60 match=0.9 floor=0.1",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 60,
+    "match": 0.9
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6072,
+     "MOTA": 0.5544,
+     "IDSW": 60,
+     "frag": 88,
+     "GT_ids": 133,
+     "ids_created": 89,
+     "id_ratio": 0.67,
+     "recall": 0.609,
+     "precision": 0.9312,
+     "MT": 28,
+     "ML": 47
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7153,
+     "MOTA": 0.5822,
+     "IDSW": 1,
+     "frag": 11,
+     "GT_ids": 8,
+     "ids_created": 9,
+     "id_ratio": 1.12,
+     "recall": 0.766,
+     "precision": 0.8088,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8098,
+     "MOTA": 0.6574,
+     "IDSW": 4,
+     "frag": 8,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7321,
+     "precision": 0.9141,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7108,
+   "mean_MOTA": 0.598,
+   "total_IDSW": 65,
+   "mean_id_ratio": 0.9667,
+   "tracker_ms_per_frame": 0.32
+  },
+  {
+   "config": "byte high=0.6 buf=60 match=0.9 floor=0.25",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 60,
+    "match": 0.9
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6105,
+     "MOTA": 0.5507,
+     "IDSW": 54,
+     "frag": 88,
+     "GT_ids": 133,
+     "ids_created": 86,
+     "id_ratio": 0.65,
+     "recall": 0.6027,
+     "precision": 0.9328,
+     "MT": 29,
+     "ML": 48
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7182,
+     "MOTA": 0.5877,
+     "IDSW": 1,
+     "frag": 10,
+     "GT_ids": 8,
+     "ids_created": 9,
+     "id_ratio": 1.12,
+     "recall": 0.7688,
+     "precision": 0.8118,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8082,
+     "MOTA": 0.6559,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7277,
+     "precision": 0.917,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7123,
+   "mean_MOTA": 0.5981,
+   "total_IDSW": 59,
+   "mean_id_ratio": 0.96,
+   "tracker_ms_per_frame": 0.31
+  },
+  {
+   "config": "byte high=0.6 buf=120 match=0.7 floor=0.1",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 120,
+    "match": 0.7
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.649,
+     "MOTA": 0.5437,
+     "IDSW": 65,
+     "frag": 81,
+     "GT_ids": 133,
+     "ids_created": 133,
+     "id_ratio": 1.0,
+     "recall": 0.5984,
+     "precision": 0.9309,
+     "MT": 29,
+     "ML": 48
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6638,
+     "MOTA": 0.5682,
+     "IDSW": 5,
+     "frag": 14,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7688,
+     "precision": 0.8047,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8189,
+     "MOTA": 0.675,
+     "IDSW": 4,
+     "frag": 8,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.7379,
+     "precision": 0.9282,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7106,
+   "mean_MOTA": 0.5956,
+   "total_IDSW": 74,
+   "mean_id_ratio": 1.28,
+   "tracker_ms_per_frame": 0.38
+  },
+  {
+   "config": "byte high=0.6 buf=120 match=0.7 floor=0.25",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 120,
+    "match": 0.7
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6631,
+     "MOTA": 0.5413,
+     "IDSW": 56,
+     "frag": 79,
+     "GT_ids": 133,
+     "ids_created": 126,
+     "id_ratio": 0.95,
+     "recall": 0.5916,
+     "precision": 0.9347,
+     "MT": 29,
+     "ML": 50
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6657,
+     "MOTA": 0.5738,
+     "IDSW": 5,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 13,
+     "id_ratio": 1.62,
+     "recall": 0.7688,
+     "precision": 0.8094,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8167,
+     "MOTA": 0.672,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 11,
+     "id_ratio": 1.22,
+     "recall": 0.7335,
+     "precision": 0.9295,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7152,
+   "mean_MOTA": 0.5957,
+   "total_IDSW": 65,
+   "mean_id_ratio": 1.2633,
+   "tracker_ms_per_frame": 0.35
+  },
+  {
+   "config": "byte high=0.6 buf=120 match=0.8 floor=0.1",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 120,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6332,
+     "MOTA": 0.5469,
+     "IDSW": 60,
+     "frag": 81,
+     "GT_ids": 133,
+     "ids_created": 103,
+     "id_ratio": 0.77,
+     "recall": 0.6035,
+     "precision": 0.9276,
+     "MT": 29,
+     "ML": 47
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6667,
+     "MOTA": 0.5627,
+     "IDSW": 4,
+     "frag": 12,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7604,
+     "precision": 0.8029,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8117,
+     "MOTA": 0.6618,
+     "IDSW": 4,
+     "frag": 8,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7321,
+     "precision": 0.9191,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7039,
+   "mean_MOTA": 0.5905,
+   "total_IDSW": 68,
+   "mean_id_ratio": 1.0867,
+   "tracker_ms_per_frame": 0.36
+  },
+  {
+   "config": "byte high=0.6 buf=120 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 120,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6671,
+     "MOTA": 0.5481,
+     "IDSW": 51,
+     "frag": 81,
+     "GT_ids": 133,
+     "ids_created": 100,
+     "id_ratio": 0.75,
+     "recall": 0.5996,
+     "precision": 0.9327,
+     "MT": 29,
+     "ML": 49
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6714,
+     "MOTA": 0.5738,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7632,
+     "precision": 0.8107,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8101,
+     "MOTA": 0.6603,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7277,
+     "precision": 0.9221,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7162,
+   "mean_MOTA": 0.5941,
+   "total_IDSW": 59,
+   "mean_id_ratio": 1.08,
+   "tracker_ms_per_frame": 0.34
+  },
+  {
+   "config": "byte high=0.6 buf=120 match=0.9 floor=0.1",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 120,
+    "match": 0.9
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6019,
+     "MOTA": 0.5539,
+     "IDSW": 63,
+     "frag": 89,
+     "GT_ids": 133,
+     "ids_created": 84,
+     "id_ratio": 0.63,
+     "recall": 0.6104,
+     "precision": 0.9293,
+     "MT": 28,
+     "ML": 47
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7153,
+     "MOTA": 0.5822,
+     "IDSW": 1,
+     "frag": 11,
+     "GT_ids": 8,
+     "ids_created": 9,
+     "id_ratio": 1.12,
+     "recall": 0.766,
+     "precision": 0.8088,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8098,
+     "MOTA": 0.6574,
+     "IDSW": 4,
+     "frag": 8,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7321,
+     "precision": 0.9141,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.709,
+   "mean_MOTA": 0.5978,
+   "total_IDSW": 68,
+   "mean_id_ratio": 0.9533,
+   "tracker_ms_per_frame": 0.34
+  },
+  {
+   "config": "byte high=0.6 buf=120 match=0.9 floor=0.25",
+   "params": {
+    "high": 0.6,
+    "low": 0.1,
+    "new": 0.6,
+    "buffer": 120,
+    "match": 0.9
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.603,
+     "MOTA": 0.5513,
+     "IDSW": 56,
+     "frag": 88,
+     "GT_ids": 133,
+     "ids_created": 82,
+     "id_ratio": 0.62,
+     "recall": 0.6039,
+     "precision": 0.9327,
+     "MT": 29,
+     "ML": 48
+    },
+    "TUD-Campus": {
+     "IDF1": 0.7182,
+     "MOTA": 0.5877,
+     "IDSW": 1,
+     "frag": 10,
+     "GT_ids": 8,
+     "ids_created": 9,
+     "id_ratio": 1.12,
+     "recall": 0.7688,
+     "precision": 0.8118,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8082,
+     "MOTA": 0.6559,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.7277,
+     "precision": 0.917,
+     "MT": 2,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7098,
+   "mean_MOTA": 0.5983,
+   "total_IDSW": 61,
+   "mean_id_ratio": 0.95,
+   "tracker_ms_per_frame": 0.33
+  },
+  {
+   "config": "botsort gmc=none",
+   "params": {
+    "kind": "botsort",
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8,
+    "gmc": "none"
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6448,
+     "MOTA": 0.5638,
+     "IDSW": 61,
+     "frag": 87,
+     "GT_ids": 133,
+     "ids_created": 119,
+     "id_ratio": 0.89,
+     "recall": 0.6428,
+     "precision": 0.9027,
+     "MT": 39,
+     "ML": 43
+    },
+    "TUD-Campus": {
+     "IDF1": 0.728,
+     "MOTA": 0.5794,
+     "IDSW": 4,
+     "frag": 11,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.7939,
+     "precision": 0.7961,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8646,
+     "MOTA": 0.7452,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.8053,
+     "precision": 0.937,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7458,
+   "mean_MOTA": 0.6295,
+   "total_IDSW": 69,
+   "mean_id_ratio": 1.1267,
+   "tracker_ms_per_frame": 0.37
+  },
+  {
+   "config": "botsort gmc=sparseOptFlow",
+   "params": {
+    "kind": "botsort",
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8,
+    "gmc": "sparseOptFlow"
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6529,
+     "MOTA": 0.5716,
+     "IDSW": 51,
+     "frag": 96,
+     "GT_ids": 133,
+     "ids_created": 116,
+     "id_ratio": 0.87,
+     "recall": 0.6495,
+     "precision": 0.903,
+     "MT": 39,
+     "ML": 40
+    },
+    "TUD-Campus": {
+     "IDF1": 0.6528,
+     "MOTA": 0.5905,
+     "IDSW": 5,
+     "frag": 11,
+     "GT_ids": 8,
+     "ids_created": 11,
+     "id_ratio": 1.38,
+     "recall": 0.805,
+     "precision": 0.8006,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8646,
+     "MOTA": 0.7452,
+     "IDSW": 4,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.8053,
+     "precision": 0.937,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.7234,
+   "mean_MOTA": 0.6358,
+   "total_IDSW": 60,
+   "mean_id_ratio": 1.12,
+   "tracker_ms_per_frame": 3.55
+  },
+  {
+   "config": "botsort gmc=sparseOptFlow reid=yolo11n-cls.pt app=0.5",
+   "params": {
+    "kind": "botsort",
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8,
+    "gmc": "sparseOptFlow",
+    "reid_model": "yolo11n-cls.pt",
+    "appearance_thresh": 0.5
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6478,
+     "MOTA": 0.5719,
+     "IDSW": 55,
+     "frag": 99,
+     "GT_ids": 133,
+     "ids_created": 116,
+     "id_ratio": 0.87,
+     "recall": 0.6498,
+     "precision": 0.9038,
+     "MT": 39,
+     "ML": 39
+    },
+    "TUD-Campus": {
+     "IDF1": 0.5897,
+     "MOTA": 0.5766,
+     "IDSW": 7,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 12,
+     "id_ratio": 1.5,
+     "recall": 0.7994,
+     "precision": 0.7972,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8614,
+     "MOTA": 0.7394,
+     "IDSW": 8,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.8053,
+     "precision": 0.937,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.6996,
+   "mean_MOTA": 0.6293,
+   "total_IDSW": 70,
+   "mean_id_ratio": 1.16,
+   "tracker_ms_per_frame": 48.22
+  },
+  {
+   "config": "botsort gmc=sparseOptFlow reid=yolo11n-cls.pt app=0.8",
+   "params": {
+    "kind": "botsort",
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8,
+    "gmc": "sparseOptFlow",
+    "reid_model": "yolo11n-cls.pt",
+    "appearance_thresh": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "ETH-Pedcross2": {
+     "IDF1": 0.6478,
+     "MOTA": 0.5719,
+     "IDSW": 55,
+     "frag": 99,
+     "GT_ids": 133,
+     "ids_created": 116,
+     "id_ratio": 0.87,
+     "recall": 0.6498,
+     "precision": 0.9038,
+     "MT": 39,
+     "ML": 39
+    },
+    "TUD-Campus": {
+     "IDF1": 0.5897,
+     "MOTA": 0.5766,
+     "IDSW": 7,
+     "frag": 13,
+     "GT_ids": 8,
+     "ids_created": 12,
+     "id_ratio": 1.5,
+     "recall": 0.7994,
+     "precision": 0.7972,
+     "MT": 3,
+     "ML": 0
+    },
+    "KITTI-17": {
+     "IDF1": 0.8614,
+     "MOTA": 0.7394,
+     "IDSW": 8,
+     "frag": 9,
+     "GT_ids": 9,
+     "ids_created": 10,
+     "id_ratio": 1.11,
+     "recall": 0.8053,
+     "precision": 0.937,
+     "MT": 5,
+     "ML": 0
+    }
+   },
+   "mean_IDF1": 0.6996,
+   "mean_MOTA": 0.6293,
+   "total_IDSW": 70,
+   "mean_id_ratio": 1.16,
+   "tracker_ms_per_frame": 54.46
+  }
+ ],
+ "test": [
+  {
+   "config": "old_production (byte .35/.4 buf30 floor .35)",
+   "params": {
+    "high": 0.35,
+    "low": 0.1,
+    "new": 0.4,
+    "buffer": 30,
+    "match": 0.8
+   },
+   "det_floor": 0.35,
+   "per_seq": {
+    "PETS09-S2L1": {
+     "IDF1": 0.7376,
+     "MOTA": 0.7909,
+     "IDSW": 23,
+     "frag": 99,
+     "GT_ids": 19,
+     "ids_created": 34,
+     "id_ratio": 1.79,
+     "recall": 0.9021,
+     "precision": 0.8947,
+     "MT": 16,
+     "ML": 0
+    },
+    "TUD-Stadtmitte": {
+     "IDF1": 0.8198,
+     "MOTA": 0.7846,
+     "IDSW": 7,
+     "frag": 10,
+     "GT_ids": 10,
+     "ids_created": 18,
+     "id_ratio": 1.8,
+     "recall": 0.8218,
+     "precision": 0.9635,
+     "MT": 6,
+     "ML": 0
+    },
+    "ETH-Sunnyday": {
+     "IDF1": 0.8428,
+     "MOTA": 0.6534,
+     "IDSW": 1,
+     "frag": 21,
+     "GT_ids": 30,
+     "ids_created": 60,
+     "id_ratio": 2.0,
+     "recall": 0.9343,
+     "precision": 0.7692,
+     "MT": 25,
+     "ML": 2
+    }
+   },
+   "mean_IDF1": 0.8001,
+   "mean_MOTA": 0.743,
+   "total_IDSW": 31,
+   "mean_id_ratio": 1.8633,
+   "tracker_ms_per_frame": 0.43
+  },
+  {
+   "config": "current_production (byte .5/.5 buf60 floor .1)",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "PETS09-S2L1": {
+     "IDF1": 0.6801,
+     "MOTA": 0.7904,
+     "IDSW": 25,
+     "frag": 96,
+     "GT_ids": 19,
+     "ids_created": 35,
+     "id_ratio": 1.84,
+     "recall": 0.9013,
+     "precision": 0.8954,
+     "MT": 16,
+     "ML": 0
+    },
+    "TUD-Stadtmitte": {
+     "IDF1": 0.7961,
+     "MOTA": 0.782,
+     "IDSW": 10,
+     "frag": 12,
+     "GT_ids": 10,
+     "ids_created": 16,
+     "id_ratio": 1.6,
+     "recall": 0.8244,
+     "precision": 0.9607,
+     "MT": 6,
+     "ML": 0
+    },
+    "ETH-Sunnyday": {
+     "IDF1": 0.8613,
+     "MOTA": 0.7013,
+     "IDSW": 1,
+     "frag": 12,
+     "GT_ids": 30,
+     "ids_created": 42,
+     "id_ratio": 1.4,
+     "recall": 0.9333,
+     "precision": 0.8013,
+     "MT": 25,
+     "ML": 2
+    }
+   },
+   "mean_IDF1": 0.7792,
+   "mean_MOTA": 0.7579,
+   "total_IDSW": 36,
+   "mean_id_ratio": 1.6133,
+   "tracker_ms_per_frame": 0.67
+  },
+  {
+   "config": "byte high=0.5 buf=30 match=0.8 floor=0.25",
+   "params": {
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 30,
+    "match": 0.8
+   },
+   "det_floor": 0.25,
+   "per_seq": {
+    "PETS09-S2L1": {
+     "IDF1": 0.7208,
+     "MOTA": 0.7907,
+     "IDSW": 22,
+     "frag": 97,
+     "GT_ids": 19,
+     "ids_created": 32,
+     "id_ratio": 1.68,
+     "recall": 0.9001,
+     "precision": 0.8959,
+     "MT": 16,
+     "ML": 0
+    },
+    "TUD-Stadtmitte": {
+     "IDF1": 0.7839,
+     "MOTA": 0.7785,
+     "IDSW": 9,
+     "frag": 10,
+     "GT_ids": 10,
+     "ids_created": 18,
+     "id_ratio": 1.8,
+     "recall": 0.8157,
+     "precision": 0.9652,
+     "MT": 7,
+     "ML": 0
+    },
+    "ETH-Sunnyday": {
+     "IDF1": 0.8569,
+     "MOTA": 0.7121,
+     "IDSW": 2,
+     "frag": 15,
+     "GT_ids": 30,
+     "ids_created": 43,
+     "id_ratio": 1.43,
+     "recall": 0.9268,
+     "precision": 0.8126,
+     "MT": 23,
+     "ML": 2
+    }
+   },
+   "mean_IDF1": 0.7872,
+   "mean_MOTA": 0.7604,
+   "total_IDSW": 33,
+   "mean_id_ratio": 1.6367,
+   "tracker_ms_per_frame": 0.55
+  },
+  {
+   "config": "botsort gmc=none",
+   "params": {
+    "kind": "botsort",
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8,
+    "gmc": "none"
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "PETS09-S2L1": {
+     "IDF1": 0.7497,
+     "MOTA": 0.8003,
+     "IDSW": 19,
+     "frag": 91,
+     "GT_ids": 19,
+     "ids_created": 31,
+     "id_ratio": 1.63,
+     "recall": 0.9068,
+     "precision": 0.8986,
+     "MT": 16,
+     "ML": 0
+    },
+    "TUD-Stadtmitte": {
+     "IDF1": 0.8009,
+     "MOTA": 0.7855,
+     "IDSW": 9,
+     "frag": 12,
+     "GT_ids": 10,
+     "ids_created": 16,
+     "id_ratio": 1.6,
+     "recall": 0.833,
+     "precision": 0.9544,
+     "MT": 7,
+     "ML": 0
+    },
+    "ETH-Sunnyday": {
+     "IDF1": 0.8561,
+     "MOTA": 0.6927,
+     "IDSW": 2,
+     "frag": 13,
+     "GT_ids": 30,
+     "ids_created": 43,
+     "id_ratio": 1.43,
+     "recall": 0.93,
+     "precision": 0.7974,
+     "MT": 25,
+     "ML": 2
+    }
+   },
+   "mean_IDF1": 0.8022,
+   "mean_MOTA": 0.7595,
+   "total_IDSW": 30,
+   "mean_id_ratio": 1.5533,
+   "tracker_ms_per_frame": 0.52
+  },
+  {
+   "config": "botsort gmc=sparseOptFlow",
+   "params": {
+    "kind": "botsort",
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8,
+    "gmc": "sparseOptFlow"
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "PETS09-S2L1": {
+     "IDF1": 0.7402,
+     "MOTA": 0.8014,
+     "IDSW": 22,
+     "frag": 91,
+     "GT_ids": 19,
+     "ids_created": 31,
+     "id_ratio": 1.63,
+     "recall": 0.9088,
+     "precision": 0.8986,
+     "MT": 16,
+     "ML": 0
+    },
+    "TUD-Stadtmitte": {
+     "IDF1": 0.8009,
+     "MOTA": 0.7855,
+     "IDSW": 9,
+     "frag": 12,
+     "GT_ids": 10,
+     "ids_created": 16,
+     "id_ratio": 1.6,
+     "recall": 0.833,
+     "precision": 0.9544,
+     "MT": 7,
+     "ML": 0
+    },
+    "ETH-Sunnyday": {
+     "IDF1": 0.8378,
+     "MOTA": 0.6895,
+     "IDSW": 2,
+     "frag": 10,
+     "GT_ids": 30,
+     "ids_created": 43,
+     "id_ratio": 1.43,
+     "recall": 0.9316,
+     "precision": 0.7944,
+     "MT": 25,
+     "ML": 2
+    }
+   },
+   "mean_IDF1": 0.793,
+   "mean_MOTA": 0.7588,
+   "total_IDSW": 33,
+   "mean_id_ratio": 1.5533,
+   "tracker_ms_per_frame": 4.9
+  },
+  {
+   "config": "botsort gmc=sparseOptFlow reid=yolo11n-cls.pt app=0.5",
+   "params": {
+    "kind": "botsort",
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8,
+    "gmc": "sparseOptFlow",
+    "reid_model": "yolo11n-cls.pt",
+    "appearance_thresh": 0.5
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "PETS09-S2L1": {
+     "IDF1": 0.6862,
+     "MOTA": 0.8007,
+     "IDSW": 26,
+     "frag": 93,
+     "GT_ids": 19,
+     "ids_created": 32,
+     "id_ratio": 1.68,
+     "recall": 0.9086,
+     "precision": 0.899,
+     "MT": 16,
+     "ML": 0
+    },
+    "TUD-Stadtmitte": {
+     "IDF1": 0.7963,
+     "MOTA": 0.7846,
+     "IDSW": 10,
+     "frag": 12,
+     "GT_ids": 10,
+     "ids_created": 16,
+     "id_ratio": 1.6,
+     "recall": 0.833,
+     "precision": 0.9544,
+     "MT": 7,
+     "ML": 0
+    },
+    "ETH-Sunnyday": {
+     "IDF1": 0.8378,
+     "MOTA": 0.6895,
+     "IDSW": 2,
+     "frag": 10,
+     "GT_ids": 30,
+     "ids_created": 43,
+     "id_ratio": 1.43,
+     "recall": 0.9316,
+     "precision": 0.7944,
+     "MT": 25,
+     "ML": 2
+    }
+   },
+   "mean_IDF1": 0.7734,
+   "mean_MOTA": 0.7583,
+   "total_IDSW": 38,
+   "mean_id_ratio": 1.57,
+   "tracker_ms_per_frame": 51.34
+  },
+  {
+   "config": "botsort gmc=sparseOptFlow reid=yolo11n-cls.pt app=0.8",
+   "params": {
+    "kind": "botsort",
+    "high": 0.5,
+    "low": 0.1,
+    "new": 0.5,
+    "buffer": 60,
+    "match": 0.8,
+    "gmc": "sparseOptFlow",
+    "reid_model": "yolo11n-cls.pt",
+    "appearance_thresh": 0.8
+   },
+   "det_floor": 0.1,
+   "per_seq": {
+    "PETS09-S2L1": {
+     "IDF1": 0.6862,
+     "MOTA": 0.8007,
+     "IDSW": 26,
+     "frag": 93,
+     "GT_ids": 19,
+     "ids_created": 32,
+     "id_ratio": 1.68,
+     "recall": 0.9086,
+     "precision": 0.899,
+     "MT": 16,
+     "ML": 0
+    },
+    "TUD-Stadtmitte": {
+     "IDF1": 0.7963,
+     "MOTA": 0.7846,
+     "IDSW": 10,
+     "frag": 12,
+     "GT_ids": 10,
+     "ids_created": 16,
+     "id_ratio": 1.6,
+     "recall": 0.833,
+     "precision": 0.9544,
+     "MT": 7,
+     "ML": 0
+    },
+    "ETH-Sunnyday": {
+     "IDF1": 0.8378,
+     "MOTA": 0.6895,
+     "IDSW": 2,
+     "frag": 10,
+     "GT_ids": 30,
+     "ids_created": 43,
+     "id_ratio": 1.43,
+     "recall": 0.9316,
+     "precision": 0.7944,
+     "MT": 25,
+     "ML": 2
+    }
+   },
+   "mean_IDF1": 0.7734,
+   "mean_MOTA": 0.7583,
+   "total_IDSW": 38,
+   "mean_id_ratio": 1.57,
+   "tracker_ms_per_frame": 45.84
+  }
+ ]
+}

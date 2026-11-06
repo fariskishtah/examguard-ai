@@ -1,15 +1,21 @@
-"""Fetch the official Ultralytics YOLO11n weights into ./models (AGPL-3.0, see docs/LICENSES.md)."""
+"""Fetch official Ultralytics YOLO11 weights into ./models (AGPL-3.0, see docs/LICENSES.md).
+
+Usage: python scripts/fetch_model.py [yolo11n|yolo11s ...]   (default: yolo11n)
+"""
+import sys
 from pathlib import Path
 
-from examguard.utils.resources import WEIGHTS_NAME, download_weights, sha256
-
-OBSERVED_SHA256 = "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1"  # hash of the file used in development
+from examguard.utils.resources import AVAILABLE_MODELS, KNOWN_SHA256, download_weights, sha256
 
 if __name__ == "__main__":
     dest = Path(__file__).resolve().parents[1] / "models"
-    p = dest / WEIGHTS_NAME
-    if not p.exists():
-        print("downloading", WEIGHTS_NAME, "from the official Ultralytics assets release ...")
-        p = download_weights(dest)
-    h = sha256(p)
-    print(p, h, "(matches development weights)" if h == OBSERVED_SHA256 else "(DIFFERENT from development weights - results may differ)")
+    for arg in sys.argv[1:] or ["yolo11n"]:
+        name = arg if arg.endswith(".pt") else arg + ".pt"
+        if name not in AVAILABLE_MODELS:
+            raise SystemExit(f"unknown model {arg!r}; choose from {AVAILABLE_MODELS}")
+        p = dest / name
+        if not p.exists():
+            print("downloading", name, "from the official Ultralytics assets release ...")
+            p = download_weights(dest, name=name)
+        h = sha256(p)
+        print(p, h, "(matches development weights)" if h == KNOWN_SHA256[name] else "(DIFFERENT from development weights - results may differ)")

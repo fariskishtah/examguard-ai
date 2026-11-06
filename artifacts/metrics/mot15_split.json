@@ -1,0 +1,14 @@
+{
+  "frozen_before_experiments": true,
+  "dev_tuning": [
+    "ETH-Pedcross2",
+    "TUD-Campus",
+    "KITTI-17"
+  ],
+  "heldout_test": [
+    "PETS09-S2L1",
+    "TUD-Stadtmitte",
+    "ETH-Sunnyday"
+  ],
+  "source": "MOTChallenge MOT15 (2DMOT2015) train sequences, CC BY-NC-SA 3.0, used locally for research evaluation only, not redistributed"
+}

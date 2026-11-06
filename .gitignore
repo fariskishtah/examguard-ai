@@ -18,6 +18,10 @@ data/processed/
 logs/
 # model weights are fetched by scripts/fetch_model.py (AGPL-3.0, see docs/LICENSES.md)
 models/*.pt
+*.pt
+*.onnx
+*.engine
+*.mlpackage
 .env
 
 # sample media + fixtures are downloaded/rebuilt by scripts (not redistributed); keep only the provenance manifest
@@ -27,3 +31,6 @@ data/fixtures/
 *.spec
 dist/
 build/
+
+# local evaluation data (never redistributed)
+data/eval/

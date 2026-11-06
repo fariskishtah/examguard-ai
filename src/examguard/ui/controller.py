@@ -49,9 +49,9 @@ class AppController:
                                    "or use Settings > Download model.")
             s = self.settings
             if self._detector is None or Path(self._detector.weights) != w or self._detector.device != self._wanted_device():
-                self._detector = YoloDetector(w, PERSON_TRACKER_FLOOR, s.phone_conf, s.nms_iou, s.imgsz, s.device)
+                self._detector = YoloDetector(w, PERSON_TRACKER_FLOOR, s.phone_conf, s.nms_iou, 640, s.device)
             d = self._detector  # thresholds may have changed in Settings since last run
-            d.phone_conf, d.nms_iou, d.imgsz = s.phone_conf, s.nms_iou, s.imgsz
+            d.phone_conf, d.nms_iou = s.phone_conf, s.nms_iou  # imgsz is chosen per video by the processor
             return d
 
     def _wanted_device(self) -> str:

@@ -21,6 +21,17 @@ frame (199 frames). **It is not real phone-use footage.** It exists to (a) test 
 associate -> confirm -> evidence -> DB chain with the real model and (b) give *computable*, clearly-labelled
 frame/event metrics. Do not read them as real-world accuracy.
 
+## Evaluation data added in the improvement pass (local only, never redistributed, not in the repository)
+| Data | Source / licence | Use |
+|---|---|---|
+| COCO val2017 (214 phone images + 400 person images, ids frozen in `artifacts/metrics/phone_coco_split.json`) | Hugging Face mirror `detection-datasets/coco` (the official host has a TLS certificate mismatch, so it was not used); annotations CC BY 4.0, images mixed Flickr licences | real labelled phone-detection benchmark (held out from YOLO training); **general scenes, not exams** |
+| MOTChallenge **MOT15** train sequences (9 of 11, via HTTP range requests) | CC BY-NC-SA 3.0 — research use only | tracking IDF1/MOTA, real-footage region-exit events, and the base footage of the synthetic phone fixtures |
+| Extra CC0 phone photographs (3) | Wikimedia Commons (see `MANIFEST.json`) | pasted into fixtures |
+
+Split discipline: COCO images split dev/test by `md5(image_id)` parity and MOT15 sequences split dev/test **before any experiment**;
+selection used dev only. Synthetic fixture sets F1/F2/F3 are described in `docs/EVALUATION.md` §3 (F3 was untouched until the final run).
+Derived fixtures and downloaded data live in `data/eval/` and `data/fixtures/` (git-ignored).
+
 ## Gap
 No real, consented, labelled exam-room video with phone use was available, so real-world phone-event accuracy is
 **NOT EVALUATED**. To close it: record a short staged clip with willing participants (written consent), label

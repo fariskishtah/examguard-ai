@@ -128,3 +128,11 @@ def test_paths_are_private_and_independent_of_repo(tmp_path):
     assert p.db.parent == p.root and p.screenshots.is_dir() and p.logs.is_dir()
     assert oct(os.stat(p.root).st_mode & 0o777) == "0o700"
     assert "examguard-ai" not in str(p.root)
+
+
+def test_model_download_helper_validates_name_and_urls():
+    from examguard.utils.resources import AVAILABLE_MODELS, KNOWN_SHA256, WEIGHTS_URL_TEMPLATE, download_weights
+    assert set(AVAILABLE_MODELS) == set(KNOWN_SHA256) and all(len(v) == 64 for v in KNOWN_SHA256.values())
+    assert WEIGHTS_URL_TEMPLATE.format(name="yolo11s.pt").endswith("/yolo11s.pt")
+    with pytest.raises(ValueError):
+        download_weights(name="evil.pt")  # only allow-listed official weights can be fetched

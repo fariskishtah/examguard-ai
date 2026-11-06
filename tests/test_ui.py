@@ -26,7 +26,7 @@ def wait_done(ctl, timeout=60):
 @pytest.fixture()
 def ctl(tmp_path):
     c = AppController(tmp_path / "home")
-    c.settings = Settings(**{**c.settings.to_dict(), "notifications_enabled": False, "phone_min_support_frames": 4,
+    c.settings = Settings(**{**c.settings.to_dict(), "notifications_enabled": False, "phone_min_support_frames": 4, "phone_min_duration_seconds": 0.0,
                              "phone_window_frames": 8, "resolve_after_seconds": 0.5})
     c._get_detector = lambda: FakeDetector()
     yield c

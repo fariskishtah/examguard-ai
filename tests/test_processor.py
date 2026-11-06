@@ -36,7 +36,7 @@ class FakeDetector:
 def env(tmp_path):
     paths = Paths(tmp_path / "home").ensure()
     repo = Repository(Database(paths.db))
-    s = Settings(notifications_enabled=False, phone_min_support_frames=4, phone_window_frames=8,
+    s = Settings(notifications_enabled=False, phone_min_support_frames=4, phone_window_frames=8, phone_min_duration_seconds=0.0,
                  resolve_after_seconds=0.5, save_annotated_video=True)
     return paths, repo, s
 
@@ -55,7 +55,8 @@ def test_full_pipeline_creates_incident_evidence_db_alert(env, tmp_path):
     inc = repo.list_incidents()[0]
     assert inc.event_type == "PHONE_VISIBLE_NEAR_TRACK" and inc.lifecycle_state == "RESOLVED"
     assert inc.review_status == "PENDING_REVIEW" and inc.confidence == pytest.approx(0.7)
-    assert inc.session.detector_version == "fake-detector-v0" and inc.session.fps == pytest.approx(25)
+    assert inc.session.detector_version.startswith("fake-detector-v0|imgsz=") and inc.session.fps == pytest.approx(25)
+    assert "botsort" in inc.session.tracker_version
     assert Path(inc.screenshot_path).is_file() and Path(inc.raw_screenshot_path).is_file()
     assert Path(inc.screenshot_path).parent == env[0].screenshots
     kinds = [k for k, _ in ev]
@@ -180,3 +181,70 @@ def test_region_exit_through_pipeline(env, tmp_path):
     _, repo, _ = run(env, write_video(tmp_path / "v.mp4", n=70), Walker(), settings=s2)
     incs = repo.list_incidents()
     assert len(incs) == 1 and incs[0].event_type == "MONITORED_REGION_EXIT" and incs[0].region_id == "region-1"
+
+
+# ---- cross-track incident merging through the whole pipeline (scripted detector; software behaviour only) -----------
+class SwitchDetector(FakeDetector):
+    """Same person + same phone, but the person vanishes for 10 frames; with a short track buffer the tracker drops the old
+    track and issues a NEW id when the person reappears (an ID switch: the old id disappears)."""
+
+    def detect(self, frame, idx, ts):
+        self.calls += 1
+        out = []
+        if not (30 <= idx < 40):
+            out.append(Detection("person", 0, 0.9, (10, 20, 70, 110), idx, ts, self.version))
+            if 5 <= idx < 75:
+                out.append(Detection("cell phone", 67, 0.7, (30, 40, 42, 58), idx, ts, self.version))
+        return out
+
+
+def test_id_switch_yields_one_consistent_incident_with_review_intact(env, tmp_path):
+    _, repo, s = env
+    reviewed = []
+
+    class Reviewer(list):  # emulate a reviewer clicking "needs more evidence" as soon as the alert arrives
+        def append(self, item):
+            kind, payload = item
+            if kind == "alert" and not reviewed:
+                repo.review(payload.incident_db_id, "NEEDS_MORE_EVIDENCE", "check the context")
+                reviewed.append(payload.incident_db_id)
+            super().append(item)
+
+    s2 = Settings(**{**s.to_dict(), "track_buffer": 5, "save_annotated_video": False})  # lost tracks are dropped after 5 frames
+    summ, repo, ev = run(env, write_video(tmp_path / "v.mp4", n=100, fps=25), SwitchDetector(), events=Reviewer(), settings=s2)
+    incs = repo.list_incidents()
+    assert len(incs) == 1 and summ.n_incidents == 1 and [k for k, _ in ev].count("alert") == 1   # no duplicate alert
+    inc = repo.get_incident(incs[0].id)
+    assert repo.count_tracks(summ.session_id) >= 2                                              # the tracker really did switch ids
+    assert inc.lifecycle_state == "RESOLVED" and inc.last_detected_at >= 74 / 25 - 0.1           # extended across the switch
+    assert inc.first_detected_at < 40 / 25                                                       # start time stays the FIRST confirmation
+    assert inc.review_status == "NEEDS_MORE_EVIDENCE" and [r.reviewer_note for r in repo.reviews_for(inc.id)] == ["check the context"]
+    assert inc.track_id is not None and inc.session.id == summ.session_id                        # references still consistent
+
+
+def test_neighbour_with_visible_track_keeps_separate_incidents_in_pipeline(env, tmp_path):
+    """Regression for the false-merge bug: A's phone ends, A stays visible, neighbour B shows a phone nearby -> 2 incidents."""
+    class Neighbours(FakeDetector):
+        def detect(self, frame, idx, ts):
+            self.calls += 1
+            out = [Detection("person", 0, 0.9, (5, 20, 55, 110), idx, ts, self.version),
+                   Detection("person", 0, 0.9, (65, 20, 115, 110), idx, ts, self.version)]
+            if 5 <= idx < 40:
+                out.append(Detection("cell phone", 67, 0.7, (25, 45, 37, 63), idx, ts, self.version))      # A's phone
+            if 80 <= idx < 115:
+                out.append(Detection("cell phone", 67, 0.7, (85, 45, 97, 63), idx, ts, self.version))      # B's phone (~60 px away)
+            return out
+    _, repo, s = env
+    s2 = Settings(**{**s.to_dict(), "phone_merge_gap_seconds": 6.0, "phone_merge_distance": 5.0, "save_annotated_video": False})
+    summ, repo, _ = run(env, write_video(tmp_path / "v.mp4", n=130, fps=25), Neighbours(), settings=s2)
+    incs = sorted(repo.list_incidents(), key=lambda i: i.first_detected_at)
+    assert len(incs) == 2 and incs[0].anonymous_track_id != incs[1].anonymous_track_id
+    assert incs[0].last_detected_at < incs[1].first_detected_at                                  # timestamps not stretched/merged
+
+
+def test_id_switch_test_has_teeth_without_merge_it_duplicates(env, tmp_path):
+    """Guard for the regression test above: with merging disabled the same scenario DOES create two incidents."""
+    _, _, s = env
+    s2 = Settings(**{**s.to_dict(), "track_buffer": 5, "save_annotated_video": False, "phone_merge_gap_seconds": 0})
+    summ, repo, _ = run(env, write_video(tmp_path / "v.mp4", n=100, fps=25), SwitchDetector(), settings=s2)
+    assert repo.count_tracks(summ.session_id) >= 2 and len(repo.list_incidents()) == 2

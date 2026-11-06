@@ -27,6 +27,18 @@ class ConfigError(ValueError):
     """Raised when a setting is out of its valid range."""
 
 
+def effective_imgsz(width: int, height: int, requested: int = 0, cap: int = 1920) -> int:
+    """YOLO input size. 0 = auto: native long side (so small objects are not shrunk away), capped, multiple of 32.
+
+    Measured on real labelled images: running at native resolution more than doubled small-phone AP50 compared
+    with a fixed 640 input on 1080p-like frames.
+    """
+    if requested:
+        return int(requested)
+    long_side = max(width, height)
+    return int(min(cap, max(320, -(-long_side // 32) * 32)))
+
+
 def default_data_dir() -> Path:
     """Per-user runtime directory, kept outside the repository/app bundle."""
     override = os.environ.get("EXAMGUARD_HOME")
@@ -47,9 +59,13 @@ class Settings:
     person_conf: float = 0.5              # tracker high-confidence threshold (also gates new tracks)
     phone_conf: float = 0.25              # phones are small -> lower floor
     nms_iou: float = 0.5
-    phone_crop_assist: bool = True        # re-detect phones inside each tracked person's crop (raises small-phone recall)
-    phone_crop_imgsz: int = 416           # YOLO input size for those crops
-    imgsz: int = 640                      # processing resolution (long side) for YOLO
+    # Second stage: re-detect phones inside each tracked person's crop and merge with the full-frame result. On tiny phones
+    # in small frames (synthetic held-out fixtures) it is what makes detection possible at all (frame recall 0% -> ~55%);
+    # on real labelled images it trades some precision for recall. It costs ~3-5x inference time. See docs/EVALUATION.md.
+    phone_crop_assist: bool = True
+    phone_crop_imgsz: int = 640           # crop input size (640 beat 416 and 320 in the benchmark)
+    imgsz: int = 0                        # YOLO input size; 0 = auto: native video size, capped at 1920 (see effective_imgsz)
+    tracker_kind: str = "botsort"         # botsort (no appearance/GMC) | bytetrack
     device: str = "auto"                  # auto | mps | cpu
     weights_path: str = "models/yolo11n.pt"
     # frame sampling: run inference on every Nth frame (tracker is fed only those)
@@ -59,7 +75,14 @@ class Settings:
     track_buffer: int = 60                # frames a lost track is kept alive (at the processed frame rate)
     match_thresh: float = 0.8
     # event A: phone near person
+    # A phone seen again on a DIFFERENT track soon after (an ID switch) is merged into the earlier incident instead of
+    # raising a duplicate alert: within phone_merge_gap_seconds and within phone_merge_distance phone-sizes (0 = off).
+    phone_merge_gap_seconds: float = 6.0
+    phone_merge_distance: float = 2.5
     phone_min_support_frames: int = 5     # frames with association inside window
+    # The supporting detections must also span at least this many SECONDS (0 = off). A frame count alone confirms a 0.1 s
+    # blip on 60 fps video (found on a real clip: a face mask flagged as a phone). The window is widened for fast video.
+    phone_min_duration_seconds: float = 0.5
     phone_window_frames: int = 15
     phone_assoc_min_overlap: float = 0.15  # fraction of phone box inside expanded person box
     phone_assoc_expand: float = 0.15       # expand person box by this fraction each side
@@ -86,7 +109,10 @@ class Settings:
         rng("person_conf", 0.05, 0.99)
         rng("phone_conf", 0.01, 0.99)
         rng("nms_iou", 0.05, 0.95)
-        rng("imgsz", 160, 1920)
+        if self.imgsz != 0:
+            rng("imgsz", 160, 1920)
+        if self.tracker_kind not in ("botsort", "bytetrack"):
+            raise ConfigError(f"tracker_kind must be botsort|bytetrack, got {self.tracker_kind!r}")
         rng("phone_crop_imgsz", 160, 1280)
         if not isinstance(self.phone_crop_assist, bool):
             raise ConfigError("phone_crop_assist must be true or false")
@@ -94,6 +120,9 @@ class Settings:
         rng("track_low_thresh", 0.01, 0.98)
         rng("track_buffer", 1, 300)
         rng("match_thresh", 0.1, 1.0)
+        rng("phone_min_duration_seconds", 0.0, 30.0)
+        rng("phone_merge_gap_seconds", 0.0, 60.0)
+        rng("phone_merge_distance", 0.5, 10.0)
         rng("phone_min_support_frames", 1, 300)
         rng("phone_window_frames", 1, 600)
         rng("phone_assoc_min_overlap", 0.01, 1.0)

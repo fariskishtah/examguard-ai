@@ -630,12 +630,15 @@ class SettingsView(ttk.Frame):
     FIELDS = [  # (key, label, kind, extra)
         ("person_conf", "Person confidence threshold (0.05-0.99)", float, None),
         ("phone_conf", "Phone confidence threshold (0.01-0.99)", float, None),
-        ("imgsz", "Processing resolution (YOLO input size, px)", int, [320, 480, 640, 800, 960, 1280]),
-        ("phone_crop_imgsz", "Phone crop-assist resolution (px)", int, [320, 416, 640]),
+        ("imgsz", "YOLO input size px (0 = auto: native, max 1920)", int, [0, 640, 960, 1280, 1920]),
+        ("weights_path", "Detection model (yolo11s = more accurate, slower)", str, ["models/yolo11n.pt", "models/yolo11s.pt"]),
+        ("tracker_kind", "Tracker", str, ["botsort", "bytetrack"]),
+        ("phone_crop_imgsz", "Phone crop-assist resolution (px)", int, [416, 640, 960]),
         ("frame_stride", "Frame sampling: run detection every N frames", int, None),
         ("device", "Compute device", str, ["auto", "mps", "cpu"]),
         ("phone_window_frames", "Temporal window (processed frames)", int, None),
         ("phone_min_support_frames", "Frames required inside window", int, None),
+        ("phone_min_duration_seconds", "Minimum event duration to alert (s)", float, None),
         ("resolve_after_seconds", "Resolve event after absence (s)", float, None),
         ("event_cooldown_seconds", "Event cooldown after resolve (s)", float, None),
         ("region_exit_min_seconds", "Region exit: minimum time outside (s)", float, None),
@@ -665,7 +668,7 @@ class SettingsView(ttk.Frame):
         self.v_notif, self.v_sound, self.v_video, self.v_crop = (tk.BooleanVar() for _ in range(4))
         for i, (txt, var) in enumerate([("Show alert notifications", self.v_notif), ("Notification sound (macOS)", self.v_sound),
                                         ("Save annotated video", self.v_video),
-                                        ("Phone crop-assist (better small-phone recall, slower)", self.v_crop)]):
+                                        ("Phone crop-assist (optional: +recall, -precision, slower)", self.v_crop)]):
             ttk.Checkbutton(form, text=txt, variable=var).grid(row=r + 1 + i, column=0, sticky="w", pady=2)
         bar = ttk.Frame(self)
         bar.pack(anchor="w", pady=16)

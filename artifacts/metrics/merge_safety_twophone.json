@@ -1,0 +1,45 @@
+{
+ "note": "SYNTHETIC two-event composite; software-level",
+ "rows": [
+  {
+   "sequence": "ADL-Rundle-8",
+   "config": "merge ON (default)",
+   "incidents_total": 3,
+   "matched_to_A": 2,
+   "matched_to_B": 1,
+   "unmatched": 0,
+   "both_events_reported_separately": true,
+   "neighbour_distance_person_widths": 1.02
+  },
+  {
+   "sequence": "ADL-Rundle-8",
+   "config": "merge OFF",
+   "incidents_total": 3,
+   "matched_to_A": 2,
+   "matched_to_B": 1,
+   "unmatched": 0,
+   "both_events_reported_separately": true,
+   "neighbour_distance_person_widths": 1.02
+  },
+  {
+   "sequence": "PETS09-S2L1",
+   "config": "merge ON (default)",
+   "incidents_total": 3,
+   "matched_to_A": 1,
+   "matched_to_B": 1,
+   "unmatched": 1,
+   "both_events_reported_separately": true,
+   "neighbour_distance_person_widths": 1.0
+  },
+  {
+   "sequence": "PETS09-S2L1",
+   "config": "merge OFF",
+   "incidents_total": 3,
+   "matched_to_A": 1,
+   "matched_to_B": 1,
+   "unmatched": 1,
+   "both_events_reported_separately": true,
+   "neighbour_distance_person_widths": 1.0
+  }
+ ]
+}

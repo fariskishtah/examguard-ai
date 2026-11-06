@@ -1,0 +1,185 @@
+{
+ "note": "LOOPED CC0 street footage + synthetic phone fixture: tests resource stability, not accuracy",
+ "long_video": {
+  "loops": 40,
+  "frames": 15000,
+  "minutes": 10.0
+ },
+ "tracker_cleanup_probe": {
+  "frames": 20000,
+  "state_samples": [
+   {
+    "frame": 0,
+    "tracked": 5,
+    "lost": 0,
+    "removed": 0
+   },
+   {
+    "frame": 2000,
+    "tracked": 6,
+    "lost": 2,
+    "removed": 72
+   },
+   {
+    "frame": 4000,
+    "tracked": 5,
+    "lost": 3,
+    "removed": 152
+   },
+   {
+    "frame": 6000,
+    "tracked": 5,
+    "lost": 3,
+    "removed": 234
+   },
+   {
+    "frame": 8000,
+    "tracked": 6,
+    "lost": 2,
+    "removed": 312
+   },
+   {
+    "frame": 10000,
+    "tracked": 5,
+    "lost": 3,
+    "removed": 392
+   },
+   {
+    "frame": 12000,
+    "tracked": 5,
+    "lost": 3,
+    "removed": 474
+   },
+   {
+    "frame": 14000,
+    "tracked": 6,
+    "lost": 2,
+    "removed": 552
+   },
+   {
+    "frame": 16000,
+    "tracked": 5,
+    "lost": 3,
+    "removed": 632
+   },
+   {
+    "frame": 18000,
+    "tracked": 5,
+    "lost": 3,
+    "removed": 714
+   }
+  ],
+  "ms_per_frame_first_1000": 0.258,
+  "ms_per_frame_last_1000": 0.249
+ },
+ "cancel_run": {
+  "tag": "cancel",
+  "video_minutes_nominal": 10.0,
+  "status": "STOPPED",
+  "frames_read": 254,
+  "wall_s": 41.6,
+  "avg_fps": 6.1,
+  "fps_per_minute_window": [
+   7.0
+  ],
+  "rss_mb_start": 604,
+  "rss_mb_first_third_mean": 613,
+  "rss_mb_last_third_mean": 689,
+  "rss_mb_peak": 882,
+  "rss_mb_end": 739,
+  "mean_cpu_pct": 105.9,
+  "incidents": 1,
+  "alerts_emitted": 1,
+  "evidence_files_all_present": true,
+  "min_gap_between_incident_starts_s": null,
+  "db_session_status": "STOPPED",
+  "db_frame_count": 254,
+  "db_tracks": 61,
+  "tracks_created": 61,
+  "annotated_video_playable": true,
+  "annotated_video_frames": 254,
+  "pause": null,
+  "error": null,
+  "all_incidents_resolved": true
+ },
+ "full_run": {
+  "tag": "full",
+  "video_minutes_nominal": 10.0,
+  "status": "COMPLETED",
+  "frames_read": 15000,
+  "wall_s": 2763.0,
+  "avg_fps": 5.4,
+  "fps_per_minute_window": [
+   4.8,
+   5.4,
+   5.9,
+   5.9,
+   5.9,
+   5.9,
+   5.8,
+   5.7,
+   5.7,
+   5.6,
+   5.5,
+   5.4,
+   5.4,
+   5.6,
+   5.4,
+   5.6,
+   5.6,
+   5.6,
+   5.5,
+   5.3,
+   5.3,
+   5.3,
+   5.3,
+   5.4,
+   5.0,
+   7.3,
+   6.7,
+   6.1,
+   4.5,
+   3.8,
+   4.3,
+   7.0,
+   7.1,
+   5.4,
+   4.4,
+   4.7,
+   5.0,
+   5.1,
+   5.2,
+   5.2,
+   5.1,
+   4.8,
+   5.1,
+   5.1,
+   5.0,
+   5.4,
+   4.2
+  ],
+  "rss_mb_start": 524,
+  "rss_mb_first_third_mean": 651,
+  "rss_mb_last_third_mean": 640,
+  "rss_mb_peak": 858,
+  "rss_mb_end": 495,
+  "mean_cpu_pct": 108.9,
+  "incidents": 40,
+  "alerts_emitted": 40,
+  "evidence_files_all_present": true,
+  "min_gap_between_incident_starts_s": 15.0,
+  "db_session_status": "COMPLETED",
+  "db_frame_count": 15000,
+  "db_tracks": 2848,
+  "tracks_created": 2848,
+  "annotated_video_playable": true,
+  "annotated_video_frames": 15000,
+  "pause": {
+   "paused_at_s": 60.0,
+   "paused_for_s": 6.0,
+   "frames_advanced_during_pause": 1
+  },
+  "error": null,
+  "all_incidents_resolved": true
+ }
+}

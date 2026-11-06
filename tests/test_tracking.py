@@ -48,3 +48,43 @@ def test_track_dropped_after_buffer_and_new_id_on_return():
 
 def test_empty_frames_ok():
     assert run([[], [], []]) == [[], [], []]
+
+
+# ---- BoT-SORT option (software-level, synthetic boxes) ------------------------------------------
+import numpy as np  # noqa: E402
+import pytest  # noqa: E402
+
+
+def test_unknown_tracker_kind_rejected():
+    with pytest.raises(ValueError):
+        PersonTracker(kind="deepsort")
+
+
+@pytest.mark.parametrize("gmc", ["none", "sparseOptFlow"])
+def test_botsort_tracks_and_keeps_ids(gmc):
+    t = PersonTracker(kind="botsort", gmc=gmc)
+    img = (np.random.default_rng(1).random((240, 320, 3)) * 255).astype(np.uint8)
+    ids = set()
+    for i in range(30):
+        res = t.update([person(10 + 2 * i, 20, 60 + 2 * i, 140, i)], img)
+        ids |= {r.track_id for r in res}
+    assert len(ids) == 1 and "botsort" in t.version
+
+
+def test_botsort_gmc_does_not_silently_fall_back(capfd):
+    """Regression: the detections shim once lacked `.xyxy`, so GMC silently disabled itself."""
+    t = PersonTracker(kind="botsort", gmc="sparseOptFlow")
+    img = (np.random.default_rng(2).random((240, 320, 3)) * 255).astype(np.uint8)
+    for i in range(5):
+        t.update([person(10 + i, 20, 60 + i, 140, i)], img)
+    out = capfd.readouterr()
+    assert "GMC failed" not in out.out + out.err
+
+
+def test_reset_clears_state():
+    t = PersonTracker()
+    for i in range(5):
+        t.update([person(10, 20, 60, 140, i)])
+    first = t.update([person(10, 20, 60, 140, 5)])[0].track_id
+    t.reset()
+    assert t.update([person(10, 20, 60, 140, 6)])[0].track_id == 1 and first >= 1

@@ -1,0 +1,187 @@
+{
+ "frames": 60000,
+ "state_samples": [
+  {
+   "frame": 0,
+   "tracked": 5,
+   "lost": 0,
+   "removed": 0
+  },
+  {
+   "frame": 2000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 72
+  },
+  {
+   "frame": 4000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 152
+  },
+  {
+   "frame": 6000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 234
+  },
+  {
+   "frame": 8000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 312
+  },
+  {
+   "frame": 10000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 392
+  },
+  {
+   "frame": 12000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 474
+  },
+  {
+   "frame": 14000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 552
+  },
+  {
+   "frame": 16000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 632
+  },
+  {
+   "frame": 18000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 714
+  },
+  {
+   "frame": 20000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 792
+  },
+  {
+   "frame": 22000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 872
+  },
+  {
+   "frame": 24000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 954
+  },
+  {
+   "frame": 26000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 1000
+  },
+  {
+   "frame": 28000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 30000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 32000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 1000
+  },
+  {
+   "frame": 34000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 36000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 38000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 1000
+  },
+  {
+   "frame": 40000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 42000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 44000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 1000
+  },
+  {
+   "frame": 46000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 48000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 50000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 1000
+  },
+  {
+   "frame": 52000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 54000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  },
+  {
+   "frame": 56000,
+   "tracked": 6,
+   "lost": 2,
+   "removed": 1000
+  },
+  {
+   "frame": 58000,
+   "tracked": 5,
+   "lost": 3,
+   "removed": 1000
+  }
+ ],
+ "ms_per_frame_first_1000": 0.823,
+ "ms_per_frame_last_1000": 0.328
+}

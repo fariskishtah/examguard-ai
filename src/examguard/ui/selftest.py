@@ -8,12 +8,15 @@ from pathlib import Path
 
 
 def run_selftest(home: Path, video: Path) -> int:
+    """Drive the real GUI + pipeline once, then review an incident and run every export. Used to verify the packaged app."""
+    import json as _json
+    from examguard.reports import export as ex
     from examguard.ui.app import ExamGuardApp
     from examguard.utils.resources import find_weights
 
     app = ExamGuardApp(home)
     out = {"frozen": bool(getattr(sys, "frozen", False)), "weights": str(find_weights(app.ctl.settings.weights_path)),
-           "db": str(app.ctl.paths.db)}
+           "db": str(app.ctl.paths.db), "tracker": app.ctl.settings.tracker_kind}
     try:
         mon = app.views["monitor"]
         app.navigate("monitor")
@@ -24,18 +27,61 @@ def run_selftest(home: Path, video: Path) -> int:
         mon._update_buttons()
         mon.start()
         t0 = time.time()
-        while time.time() - t0 < 600 and not (app.ctl.worker and app.ctl.worker.finished.is_set() and not mon._polling):
+        while time.time() - t0 < 1800 and not (app.ctl.worker and app.ctl.worker.finished.is_set() and not mon._polling):
             app.update()
             time.sleep(0.01)
         app.update()
-        st = app.ctl.repo.stats()
-        s = app.ctl.repo.list_sessions()[0] if st["videos"] else None
+        repo = app.ctl.repo
+        st = repo.stats()
+        s = repo.list_sessions()[0] if st["videos"] else None
         out.update({"stats": {k: v for k, v in st.items() if k != "last_session"},
                     "session_status": s.processing_status if s else None, "detector": s.detector_version if s else None,
-                    "frames": s.frame_count if s else None})
-        inc = app.ctl.repo.list_incidents()
-        out["evidence_files_exist"] = all(Path(i.screenshot_path).is_file() for i in inc)
+                    "tracker_version": s.tracker_version if s else None, "frames": s.frame_count if s else None})
+        inc = repo.list_incidents()
+        out["evidence_files_exist"] = all(Path(i.screenshot_path).is_file() and Path(i.raw_screenshot_path).is_file() for i in inc)
+        # human review through the repository the GUI uses, then every export
+        if inc:
+            repo.review(inc[0].id, "NEEDS_MORE_EVIDENCE", "selftest reviewer note")
+            exp = app.ctl.paths.exports
+            incs = repo.list_incidents()
+            ex.export_csv(repo, incs, exp / "incidents.csv"); ex.export_json(repo, incs, exp / "incidents.json")
+            n_shots = ex.export_screenshots(incs, exp / "shots")
+            ex.export_report_html(repo, s.id, exp / "report.html")
+            vid = ex.export_annotated_video(repo.get_session(s.id), exp)
+            data = _json.loads((exp / "incidents.json").read_text())
+            out["exports"] = {"csv_bytes": (exp / "incidents.csv").stat().st_size, "json_incidents": len(data["incidents"]),
+                              "json_review_history": [len(i["review_history"]) for i in data["incidents"]], "screenshot_files": n_shots,
+                              "report_bytes": (exp / "report.html").stat().st_size, "video": str(vid) if vid else None}
+            if vid:
+                import cv2
+                cap = cv2.VideoCapture(str(vid))
+                fourcc = int(cap.get(cv2.CAP_PROP_FOURCC)).to_bytes(4, "little").decode("latin1")
+                out["exports"].update({"video_fourcc": fourcc, "video_frames": int(cap.get(cv2.CAP_PROP_FRAME_COUNT)), "video_playable": cap.isOpened()})
+                cap.release()
         ok = bool(s and s.processing_status == "COMPLETED")
+        return _finish(out, 0 if ok else 1)
+    finally:
+        app.on_close()
+
+
+def run_verify_persistence(home: Path) -> int:
+    """Second launch on the same data folder: records, review history and evidence must have survived a restart."""
+    from examguard.ui.app import ExamGuardApp
+
+    app = ExamGuardApp(home)
+    out = {}
+    try:
+        repo = app.ctl.repo
+        st = repo.stats()
+        inc = repo.list_incidents()
+        app.show_incident(inc[0].id) if inc else None
+        app.update()
+        iv = app.views["incidents"]
+        out.update({"stats": {k: v for k, v in st.items() if k != "last_session"}, "needs_more": st["needs_more"],
+                    "review_notes": [r.reviewer_note for r in repo.reviews_for(inc[0].id)] if inc else [],
+                    "evidence_viewer_loaded_image": bool(inc and iv.viewer._img is not None),
+                    "dashboard_cards": {k: c.var.get() for k, c in app.views["dashboard"].cards.items()}})
+        ok = bool(inc and out["needs_more"] >= 1 and "selftest reviewer note" in out["review_notes"] and out["evidence_viewer_loaded_image"])
         return _finish(out, 0 if ok else 1)
     finally:
         app.on_close()

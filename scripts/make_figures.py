@@ -25,8 +25,8 @@ def arch():
     im = Image.new("RGB", (W, H), BG); d = ImageDraw.Draw(im)
     d.text((40, 28), "ExamGuard AI - pipeline architecture", font=font(34, True), fill=TEXT)
     d.text((40, 76), "Local-first. Detection, tracking, event analysis, storage and UI are separate modules.", font=font(18), fill=MUTED)
-    steps = [("Video input", "OpenCV decode\nstreamed, true\ntimestamps", "video/reader"), ("YOLO11n", "person + cell phone\nMPS / CPU\n(+ person-crop assist)", "detection/"),
-             ("ByteTrack", "anonymous\ntrack IDs\n(no identity)", "tracking/"), ("Event engine", "association,\ntemporal confirm,\nlifecycle, cooldown", "events/"),
+    steps = [("Video input", "OpenCV decode\nstreamed, true\ntimestamps", "video/reader"), ("YOLO11n", "person + cell phone\nnative resolution (<=1920)\n+ 640-px crop assist", "detection/"),
+             ("BoT-SORT", "anonymous\ntrack IDs\n(no identity)", "tracking/"), ("Event engine", "association, >=0.5 s\nconfirmation, ID-switch\nmerge, lifecycle", "events/"),
              ("Evidence", "raw + annotated\nframe, atomic,\nunique names", "evidence/"), ("SQLite", "Alembic migrations\nsessions, tracks,\nincidents, reviews", "database/")]
     bw, gap, x0, y0 = 220, 50, 40, 150
     for i, (t, sub, mod) in enumerate(steps):
@@ -60,35 +60,28 @@ def bars(d, x, y, w, h, items, maxv, title, fmt):
 
 
 def evaluation():
-    ph = json.loads((ROOT / "artifacts/metrics/phone_fixture_eval.json").read_text())["rows"]
-    bm = json.loads((ROOT / "artifacts/metrics/benchmark.json").read_text())["rows"]
-    pick = lambda **kw: next(r for r in ph if all(r[k] == v for k, v in kw.items()))  # noqa: E731
-    base = dict(imgsz=640, phone_conf=0.25, support_frames=5, resolve_after_s=2.0)
-    off, on = pick(crop_assist=False, **base), pick(crop_assist=True, **base)
-    W, H = 1600, 900
+    r2 = json.loads((ROOT / "artifacts/metrics/phone_coco_round2_test.json").read_text())["rows"]
+    bm = json.loads((ROOT / "artifacts/metrics/benchmark_final.json").read_text())["rows"]
+    pick = lambda strat, cond: next(r for r in r2 if r["model"] == "yolo11n" and r["condition"] == cond and r["strategy"] == strat)["all"]["AP50"]  # noqa: E731
+    W, H = 1600, 920
     im = Image.new("RGB", (W, H), BG); d = ImageDraw.Draw(im)
     d.text((40, 28), "Evaluation overview - measured values only", font=font(34, True), fill=TEXT)
-    d.text((40, 76), "Phone panel = SYNTHETIC composite fixture (not real-world accuracy).  Mac M2 8 GB, yolo11n, 640 px.", font=font(18), fill=AMBER)
-    bars(d, 40, 170, 720, 180, [("frame recall - full frame", off["frame_phone_recall"], BLUE), ("frame recall - crop assist", on["frame_phone_recall"], GREEN),
-                                ("window covered - full frame", off["gt_window_alert_coverage"], BLUE), ("window covered - crop assist", on["gt_window_alert_coverage"], GREEN)],
-         1.0, "Phone events (synthetic fixture, conf 0.25)", lambda v: f"{v:.2f}")
-    d.text((40, 372), f"precision: full-frame {off['frame_phone_precision']:.2f} | crop-assist {on['frame_phone_precision']:.2f};  "
-                      f"alerts correct/false: {off['incidents_correct']}/{off['incidents_false']} vs {on['incidents_correct']}/{on['incidents_false']}", font=font(16), fill=MUTED)
-    rows = [r for r in bm if r["clip"] in ("street_1080p", "classroom_1080p", "classroom_360p")]
-    items = []
-    for r in rows:
-        if r["annotated_video_written"]:
-            continue
-        col = GREEN if r["phone_crop_assist"] else BLUE
-        items.append((f"{r['clip']} {r['device'].upper()} {'assist' if r['phone_crop_assist'] else 'plain'}", r["end_to_end_fps"], col if r["device"] == "mps" else AMBER))
-    bars(d, 820, 170, 740, 330, items, 70, "End-to-end speed (frames/s)", lambda v: f"{v:.1f}")
-    notes = ["NOT EVALUATED (no labelled real data): person/phone mAP, tracking IDF1/HOTA/MOTA, real event precision/recall, false alerts per hour.",
-             "Normal footage: 0 alerts on 25 s of real clips (classroom + street) - an observation, not a false-alert rate.",
-             "Tracking proxy: seated classroom >= 11 people, 19 IDs created (ByteTrack defaults gave 32) - IDs still fragment.",
-             "Phone recall is weak (small objects); crop assist helps (0.10 -> 0.30 frame recall) at ~3x inference cost."]
-    d.rounded_rectangle((40, 560, 1560, 850), 14, fill=PANEL, outline=LINE, width=3)
+    d.text((40, 76), "Left: REAL labelled COCO images (held-out test split), small-phone stress.  Right: controlled speed benchmark, 1080p, Apple M2 8 GB.", font=font(17), fill=AMBER)
+    items = [("full-frame @640 (original)", pick("full@640", "far"), BLUE), ("640 + crop416 (shipped earlier)", pick("union full640+crop416 [shipped]", "far"), AMBER),
+             ("native 1920 (new)", pick("full@1920", "far"), GREEN), ("1280 + crop640 union", pick("union full1280+crop640", "far"), GREEN)]
+    bars(d, 40, 170, 720, 180, items, 0.6, "Phone AP50, yolo11n, 'far' condition (test)", lambda v: f"{v:.2f}")
+    sub = lambda c: [r for r in bm if r["clip"] == "street_1080p" and r["config"].startswith(c)][0]["end_to_end_fps"]  # noqa: E731
+    sp = [("BEFORE 640+crop416", sub("BEFORE: 640 + crop416"), AMBER), ("BEFORE-fast 640", sub("BEFORE (fast)"), BLUE),
+          ("AFTER default (native+crop640)", sub("AFTER default"), GREEN), ("AFTER-fast (native)", sub("AFTER fast"), GREEN), ("AFTER-accurate (yolo11s)", sub("AFTER accurate"), RED)]
+    bars(d, 820, 170, 740, 230, sp, 70, "End-to-end speed on 1080p street clip (fps)", lambda v: f"{v:.1f}")
+    notes = ["NOT EVALUATED (no labelled real exam footage): phone events in real exams, real false-alert rate, tracking HOTA.",
+             "Synthetic composites (pasted CC0 phones, real MOT15 footage): untouched set F3 found 1/3 staged events (shipped-earlier: 0/3), 0 clean-twin false alerts.",
+             "Tracking on real MOT15 ground truth: IDF1 0.77-0.80 for every sensible config on 3 test sequences - differences are within noise.",
+             "Default costs ~2.7x processing time vs the earlier shipped config (5-8 fps on 1080p); native resolution alone is free. Soak: 10 min video, no memory growth.",
+             "Two real false alerts found (face mask - fixed by a 0.5 s minimum duration; 6x10 px head blob - not fixed). Every alert needs human review."]
+    d.rounded_rectangle((40, 520, 1560, 880), 14, fill=PANEL, outline=LINE, width=3)
     for i, t in enumerate(notes):
-        d.text((64, 590 + i * 58), "• " + t, font=font(19), fill=TEXT if i else AMBER)
+        d.text((64, 548 + i * 64), "- " + t, font=font(18), fill=AMBER if i == 0 else TEXT)
     im.save(OUT / "09_evaluation_overview.png")
 
 

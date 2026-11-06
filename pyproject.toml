@@ -23,6 +23,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest", "pytest-cov"]
+eval = ["motmetrics", "pandas", "pyarrow", "remotezip"]  # scripts/eval_*.py only
 
 [project.scripts]
 examguard = "examguard.__main__:main"

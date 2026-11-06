@@ -24,6 +24,9 @@ TITLES = [
     "File:Video Codec Test pedestrian area 1080p25.y4m.webm",   # CC0
     "File:Student studies in classroom during face to face learning in Padang, Indonesia.webm",  # CC BY-SA 4.0
     "File:Black smartphone in hand (Unsplash).jpg",  # CC0, phone photo used ONLY for synthetic test fixtures
+    "File:Smartphone in Hand (Unsplash).jpg",  # CC0, extra phone photos for HELD-OUT synthetic fixtures
+    "File:Hand-smartphone-technology-calling.jpg",  # CC0
+    "File:Smartphone Use.jpg",  # CC0
 ]
 
 
