@@ -1,0 +1,14 @@
+# Versions this project was developed and tested with (Python 3.12, macOS arm64).
+# Install with:  uv venv --python 3.12 --managed-python && uv pip install -r requirements.txt && uv pip install -e .
+ultralytics==8.4.203
+torch==2.15.0
+torchvision==0.29.2
+opencv-python-headless==5.0.0.93
+numpy==2.5.4
+pillow==13.0.0
+sqlalchemy==2.1.8
+alembic==1.20.1
+psutil==7.2.2
+lap==0.5.14
+pytest==9.2.0
+pyinstaller==6.22.3

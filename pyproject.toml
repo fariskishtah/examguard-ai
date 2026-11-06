@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "examguard-ai"
+version = "0.1.0"
+description = "ExamGuard AI - exam video monitoring and observable-event review (human-in-the-loop)"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "Faris Mohamed Kishtah" }]
+dependencies = [
+  "ultralytics>=8.3",
+  "opencv-python-headless>=4.9",
+  "numpy",
+  "pillow",
+  "sqlalchemy>=2.0",
+  "alembic>=1.13",
+  "psutil",
+  "lap",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+
+[project.scripts]
+examguard = "examguard.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+examguard = ["database/migrations/*.py", "database/migrations/*.mako", "database/migrations/versions/*.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "integration: uses the real YOLO model and/or real video files (slower)",
+]
+addopts = "-ra"
