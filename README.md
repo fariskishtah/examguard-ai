@@ -147,9 +147,8 @@ python scripts/run_headless.py data/fixtures/synthetic_phone_pedestrian.mp4 --ho
 Verified **as a bundle** (repo `models/` hidden): launches, bundled YOLO weights, real inference (torchvision issue stays fixed),
 BoT-SORT, upload/processing, evidence screenshots, SQLite (integrity ok, 0 FK violations), human review, CSV/JSON/screenshot/
 report exports, **H.264 export** (ffprobe: h264 1920×1080, 375/375 frames), restart persistence, clean exit. It is **ad-hoc signed,
-not notarised** (right-click → Open on another Mac). Windows/Linux packaging was **not** tested. The window screenshots above come
-from the previous packaged build (same layout; Settings has since gained model/tracker/duration fields); capturing the final build
-was blocked by a locked screen.
+not notarised** (right-click → Open on another Mac). Windows/Linux packaging was **not** tested. The window screenshots above were
+captured from this final packaged build. The phone shown in them is the synthetic composite (a pasted CC0 photo), not real phone use.
 
 ## Testing
 `pytest` → **119 passed, 0 failed, 0 skipped**: database/migrations, events (incl. merge, duration, **false-merge regression**),

@@ -240,5 +240,5 @@ Packaged `ExamGuard AI.app` (1.0 GB, ad-hoc signed, not notarised), run with the
 | H.264 export | ffprobe: h264 High 1920×1080 25 fps **375 frames** |
 | Restart | records, review note, evidence image all present; dashboard cards correct; exit code 0 (clean shutdown) |
 
-*Visual note:* the window screenshots in the README come from the **previous** packaged build (same layout; the Settings
-page has since gained model/tracker/duration fields). Re-capturing the final build was blocked because the Mac's screen was locked.
+*Visual check:* the README window screenshots (tracking overlays, red-box alert + toast, dashboard, incident viewer, review, settings)
+were captured from this final packaged build. The red-box frame is the synthetic composite fixture.

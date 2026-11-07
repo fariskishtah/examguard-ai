@@ -20,7 +20,7 @@ settings, region editor), exports (CSV, JSON, screenshots, annotated H.264 video
 | 10-minute soak (15 000 frames, 1080p) | 46.05 min wall time (4.6× real time), 5.4 fps, RSS 524→peak 858→495 MB (no growth), 40/40 staged events, pause/resume + cancel correct, 0 errors |
 | Tracker state | bounded over 60 000 frames (removed list capped at 1000) |
 | Performance cost of the new default | ≈2.7× slower than the earlier shipped config (5–8 fps on 1080p); native resolution alone is free; crop assist is the cost |
-| Caveats | app is ad-hoc signed, **not notarised**; macOS only; the README window screenshots are from the *previous* packaged build (final build could not be captured — the Mac's screen was locked); longest soak = 10 min of **looped** footage |
+| Caveats | app is ad-hoc signed, **not notarised**; macOS only; README window screenshots were captured from the final packaged build; longest soak = 10 min of **looped** footage |
 
 ## 3. Real-world detection accuracy — NOT established
 * Detector: generic COCO-pretrained YOLO11 — **not fine-tuned for exams**; no training, no checkpoints.
@@ -55,7 +55,7 @@ on thin evidence (9 staged events: 5 vs 4).
 1. **Real-world validation**: needs consented, labelled exam-style footage with real phone use and ground-truth identities.
 2. No fine-tuning (no authorised labelled data); no specialist model is claimed.
 3. Known unfixed false-alert pattern (tiny head/hand blobs); no size-vs-person filter (would be tuned on one example).
-4. Re-capture README window screenshots from the final build (needs an unlocked screen); public Hugging Face demo not built.
+4. Public Hugging Face demo not built (optional).
 5. Windows/Linux packaging untested; macOS app not notarised; no soak > 10 min; no real-footage soak.
 
 ## Resume instructions
